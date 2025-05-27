@@ -9,6 +9,7 @@
     <meta name="author" content="irstheme">
 
     <title> Patil Machines Pvt Ltd </title>
+     <link rel="icon" type="image/x-icon" href="assets/images/PM_LOGO.png">
     
     <link href="assets/css/themify-icons.css" rel="stylesheet">
     <link href="assets/css/flaticon.css" rel="stylesheet">
@@ -159,10 +160,18 @@
                             <h2>We set the standards others try to live up to.</h2>
                         </div>
                         <div class="details">
-                            <p>In India, Patil Machines Pvt Ltd was the first to develop a Plodder for Toilet Soap as well as Laundry soap Plant in the Year 1965. Since then the convoy of Machinery and Solutions to numerous clients within the Nation as well as abroad has kept us on the leading position in the industry.</p>
-                            <p>We provide cutting edge solutions and state-of- art equipments to various applications like, Toilet Soap and Laundry Soap Plant, Detergent Cake Plant, Detergent Powder Machinery, Fatty Acid Plant, Sulphonation Plant, Oil Refinery Plant, Saponification – Noodle Plant. We specialize in manufacture, installation and commissioning of these projects as well as glycerine distillation plant and allied equipments.</p>
-                            <p>Our commitment to the continuously improving technology and consistency in quality has become a tradition to cater to the requirement of multinational organisation in this field.</p>
-                            <p>Our experience encompasses the areas such as basic design, detailed engineering, supply of the plant and equipments on turnkey basis and also erection and commissioning. Precision Machinists designers and engineers have kept themselves abreast with the latest technologies around the world. They research with the leading manufacturers and clients to determine the current and future needs of these industries. Such requirements have been studied with great care, concentrating on the difficulties commonly encountered by the actual users. The result of these activities is what results in new levels of productivity, efficiency and reliability.</p>
+                          
+                             <p id="short-about">
+  In India, Patil Machines Pvt Ltd was the first to develop a Plodder for Toilet Soap as well as Laundry soap Plant in the Year 1965....
+  <a href="#" id="read-more-about" style="color: blue; font-size: 0.9rem;">Read More</a>
+</p>
+
+<p id="full-about" style="display: none;">
+  In India, Patil Machines Pvt Ltd was the first to develop a Plodder for Toilet Soap as well as Laundry soap Plant in the Year 1965. Since then the convoy of Machinery and Solutions to numerous clients within the Nation as well as abroad has kept us on the leading position in the industry.<br><br>
+  We provide cutting edge solutions and state-of- art equipments to various applications like, Toilet Soap and Laundry Soap Plant, Detergent Cake Plant, Detergent Powder Machinery, Fatty Acid Plant, Sulphonation Plant, Oil Refinery Plant, Saponification – Noodle Plant. We specialize in manufacture, installation and commissioning of these projects as well as glycerine distillation plant and allied equipments.<br><br>
+  Our commitment to the continuously improving technology and consistency in quality has become a tradition to cater to the requirement of multinational organisation in this field.<br><br>
+  Our experience encompasses the areas such as basic design, detailed engineering, supply of the plant and equipments on turnkey basis and also erection and commissioning. Precision Machinists designers and engineers have kept themselves abreast with the latest technologies around the world. They research with the leading manufacturers and clients to determine the current and future needs of these industries. Such requirements have been studied with great care, concentrating on the difficulties commonly encountered by the actual users. The result of these activities is what results in new levels of productivity, efficiency and reliability.
+</p>
                             
                             <div class="clearfix" style="display: flex; gap: 40px;">
                                 <ul style=" padding: 0; margin: 0;">
@@ -184,7 +193,7 @@
                     <div class="col col-md-6">
                         <div class="right-col">
                             <div class="img-holder">
-                                <img src="assets/images/about.png" alt>
+                                <img src="assets/images/about2.jpg" alt>
                             </div>
                             <div class="video-holder">
                                 <a href="https://www.youtube.com/embed/7e90gBu4pas?autoplay=1" class="hero-video-btn video-btn"  data-type="iframe" tabindex="0"><i class="fi flaticon-play-button"></i>Watch our intro video</a> 
@@ -676,6 +685,17 @@
 
     <!-- Custom script for this template -->
     <script src="assets/js/script.js"></script>
+
+    <script>
+        //Read More
+  document.getElementById("read-more-about").addEventListener("click", function (e) {
+    e.preventDefault();
+    document.getElementById("short-about").style.display = "none";
+    document.getElementById("full-about").style.display = "block";
+  });
+
+  </script>
+
 </body>
 
 <!-- dustech/about.html  13 Nov 2019 12:55:21 GMT -->

@@ -112,6 +112,18 @@ body {
   overflow-x: hidden;
 }
 
+@media(max-width: 650px){
+  #office-info{
+    margin-top: 25px !important;
+  }
+ 
+  #submit-btn{
+    margin-left: 15px;
+  }
+
+
+}
+
 @media (max-width: 767px) {
   body {
     font-size: 14px;
@@ -715,12 +727,7 @@ img {
 /*--------------------------------------
 	service single sidebar
 ----------------------------------------*/
-.service-sidebar {
-  /*** service-list-widget ***/
-  /*** download-widget ***/
-  /*** contact-widget ***/
-  /*** service-features-widget ***/
-}
+
 
 @media (max-width: 991px) {
   .service-sidebar {
@@ -876,13 +883,7 @@ img {
 /*------------------------------------
 	blog sidebar
 ------------------------------------*/
-.blog-sidebar {
-  /*** search-widget ***/
-  /*** about-widget ***/
-  /*** category-widget ***/
-  /*** recent-post-widget ***/
-  /*** tag-widget ***/
-}
+
 
 @media screen and (min-width: 992px) {
   .blog-sidebar {
@@ -1346,11 +1347,7 @@ img {
 /*--------------------------------------------------------------
 #0.3	header
 --------------------------------------------------------------*/
-.site-header {
-  /* navigation open and close btn hide for width screen */
-  /* style for navigation less than 992px */
-  /*navbar collaps less then 992px*/
-}
+
 
 .site-header .navigation {
   background-color: #fff;
@@ -1383,9 +1380,7 @@ img {
 }
 
 @media screen and (min-width: 992px) {
-  .site-header #navbar {
-    /*** hover effect ***/
-  }
+ 
   .site-header #navbar li {
     position: relative;
   }
@@ -1492,9 +1487,7 @@ img {
 }
 
 @media screen and (min-width: 992px) {
-  .site-header #navbar {
-    /*** hover effect ***/
-  }
+ 
   .site-header #navbar .has-mega-menu {
     position: relative;
   }
@@ -1595,9 +1588,7 @@ img {
 }
 
 @media (max-width: 991px) {
-  .site-header {
-    /* class for show hide navigation */
-  }
+
   .site-header .container {
     width: 100%;
   }
@@ -1736,9 +1727,6 @@ img {
 /*--------------------------------------------------------------
 	#header-style-1
 --------------------------------------------------------------*/
-.header-style-1, .header-style-2, .header-style-3 {
-  /*** search-contact ***/
-}
 
 @media screen and (min-width: 992px) {
   .header-style-1, .header-style-2, .header-style-3 {
@@ -3794,7 +3782,7 @@ img {
 }
 
 .quote-section .right-col, .quote-section-s2 .right-col {
-  background: url("../images/quote-bg.jpg") center center/cover no-repeat local;
+  background: url("../images/quote-bg3.jpg") center center/cover no-repeat local;
   position: relative;
 }
 
@@ -4852,10 +4840,7 @@ img {
 /*--------------------------------------------------------------
 #5.1	service-single-section
 --------------------------------------------------------------*/
-.service-single-section {
-  /*** why-choose-service ***/
-  /*** service single tab ***/
-}
+
 
 @media screen and (min-width: 1200px) {
   .service-single-section .service-single-content {
@@ -5460,12 +5445,7 @@ img {
 /*--------------------------------------------------------------
 #7.1	blog-pg-section
 --------------------------------------------------------------*/
-.blog-pg-section {
-  /*** format-standard ***/
-  /*** format-gallery ***/
-  /*** format-quote ***/
-  /*** format-video ***/
-}
+
 
 .blog-pg-section .blog-content .post {
   margin-bottom: 100px;
@@ -5771,13 +5751,7 @@ img {
 /*--------------------------------------------------------------
 #8.1	blog-single-section
 --------------------------------------------------------------*/
-.blog-single-section {
-  /*** tag-share ***/
-  /*** author-box ***/
-  /*** more-posts ***/
-  /*** comments area ***/
-  /*** comment-respond ***/
-}
+
 
 .blog-single-section .entry-meta {
   list-style: none;
@@ -6767,10 +6741,7 @@ img {
 /*--------------------------------------------------------------
 #11.1	shop-single-section
 --------------------------------------------------------------*/
-.shop-single-section {
-  /*** product slider ***/
-  /*** product info ***/
-}
+
 
 .shop-single-section .shop-single-slider .slider-for {
   text-align: center;
