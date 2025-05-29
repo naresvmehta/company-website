@@ -37,7 +37,7 @@
 
 <style>
   .youtube {
-    border: 3px solid #FF0000; /* YouTube red border */
+    border: 1px solid #146e1d; /* YouTube red border */
     border-radius: 12px;
     padding: 4px;
     background-color: white; /* Optional for better contrast */
@@ -55,9 +55,79 @@
   }
 
   .video-holder{
-    background-color: #FF0000 !important;
+    background-color: #146e1d !important;
   }
 </style>
+
+
+  <style>
+
+    .marquee-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+    .marquee {
+      display: flex;
+      width: max-content;
+      animation: scroll 40s linear infinite;
+    }
+    .product-card {
+      flex: 0 0 300px;
+      width: 300px;
+      margin: 0 10px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      min-height: 440px; /* 🔁 Common height */
+    }
+    .product-card:hover {
+      transform: scale(1.03);
+       border: 1px solid #7fbaf8;
+      
+    }
+    .product-card img {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+    }
+    .product-card h4 {
+      margin: 15px;
+      font-size: 18px;
+    }
+    .product-card p {
+      margin: 0 15px 15px;
+      font-size: 14px;
+      color: #555;
+    }
+    .read-more {
+      display: block;
+      margin: 0 15px 15px;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .product-link{
+        text-decoration: none;
+        color: inherit;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .product-card {
+        flex: 0 0 90vw;
+        min-height: 420px;
+      }
+      .marquee {
+        animation-duration: 40s;
+      }
+    }
+  </style>
 
 
 <body>
@@ -232,12 +302,12 @@
 
                             <div class="clearfix">
                                 <ul>
-                                    <li><i class="ti-check"></i> Pioneer in Plodder technology since 1965</li>
-                                    <li><i class="ti-check"></i> Advanced soap & detergent plant solutions</li>
+                                    <li><i class="ti-check"></i> Plodder tech pioneer since 1965</li>
+                                    <li><i class="ti-check"></i> Soap & detergent plant solutions</li>
                                 </ul>
                                 <ul>
                                     <li><i class="ti-check"></i> Turnkey project expertise</li>
-                                    <li><i class="ti-check"></i> End-to-end installation & commissioning</li>
+                                    <li><i class="ti-check"></i> Complete setup & commissioning</li>
                                 </ul>
                             </div>
                             <div class="btns">
@@ -251,7 +321,7 @@
  <div class="col col-md-6">
   <div class="right-col">
     <div class="img-holder youtube">
-      <img src="assets/images/about2.jpg" alt="YouTube Logo">
+      <img src="assets/images/about3.jpg" alt="YouTube Logo">
     </div>
     <div class="video-holder">
       <a href="https://www.youtube.com/@precisionmachinists3633" target="_blank">
@@ -273,7 +343,7 @@
                 <div class="row">
                     <div class="col col-md-6">
                         <div class="section-title-s2">
-                            <span>Our Industry Solutions</span>
+                            <span>Our Products</span>
                             <h2>Delivering the best products and industrial services</h2>
                         </div>
                     </div>
@@ -287,46 +357,307 @@ Built on decades of experience, driven by innovation.</p>
                 <div class="row">
                     <div class="col col-xs-12">
                         <div class="service-grids clearfix">
-                            <div class="grid">
-                                <img src="assets/images/services/img-1.jpg" alt>
-                                <h4><a href="#">Dual Color Plodder with Cone</a></h4>
-                                <p> Samsa was a travelling salesman and above it there hung a picture that he had recently</p>
-                                <a href="#" class="read-more">Read More <i class="fi flaticon-next"></i></a>
-                            </div>
-                            <div class="grid">
-                                <img src="assets/images/services/img-2.jpg" alt>
-                                <h4><a href="#">Blank Title</a></h4>
-                                <p> Samsa was a travelling salesman and above it there hung a picture that he had recently</p>
-                                <a href="#" class="read-more">Read More <i class="fi flaticon-next"></i></a>
-                            </div>
-                            <div class="grid">
-                                <img src="assets/images/services/img-3.jpg" alt>
-                                <h4><a href="#">Pilot Plodder</a></h4>
-                                <p> Samsa was a travelling salesman and above it there hung a picture that he had recently</p>
-                                <a href="#" class="read-more">Read More <i class="fi flaticon-next"></i></a>
-                            </div>
-                            <div class="grid">
-                                <img src="assets/images/services/img-4.png" alt>
-                                <h4><a href="#">Hand Stamping Machine</a></h4>
-                                <p> Samsa was a travelling salesman and above it there hung a picture that he had recently</p>
-                                <a href="#" class="read-more">Read More <i class="fi flaticon-next"></i></a>
-                            </div>
-                            <div class="grid">
-                                <img src="assets/images/services/img-5.jpg" alt>
-                                <h4><a href="#">Mini Hydro Stamping Machine</a></h4>
-                                <p> Samsa was a travelling salesman and above it there hung a picture that he had recently</p>
-                                <a href="#" class="read-more">Read More <i class="fi flaticon-next"></i></a>
-                            </div>
-                            <div class="grid">
-                                <img src="assets/images/services/img-6.jpg" alt>
-                                <h4><a href="#">Pedal Stamping Machine</a></h4>
-                                <p> Samsa was a travelling salesman and above it there hung a picture that he had recently</p>
-                                <a href="#" class="read-more">Read More <i class="fi flaticon-next"></i></a>
-                            </div>
+
+
+<div class="marquee-wrapper">
+  <div class="marquee">
+
+    
+
+    <!-- Card 1 -->
+    <a href="#dual-color-plodder" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-1.jpeg" alt="">
+        <h4>Roll Mill</h3>
+      <p>Ensures uniform mixing of soap mass with refined texture.</p>
+       <!--<span class="read-more">Read More</span> --> 
+      </div>
+    </a>
+
+    <!-- Card 2 -->
+    <a href="#blank-title" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-2.jpeg" alt="">
+        <h4>Vacuum Plodder</h4>
+        <p>High precision machinery unit for soap making.</p>
+      </div>
+    </a>
+
+    <!-- Card 3 -->
+    <a href="#pilot-plodder" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-3.jpeg" alt="">
+        <h4>Pilot Vacuum Spray Dryer</h4>
+        <p>Small-scale soap development machine.</p>
+      </div>
+    </a>
+
+    <!-- Card 4 -->
+    <a href="#hand-stamping-machine" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-4.jpeg" alt="">
+        <h4>Detergent Cake & Powder Skid Mounted Pilot Plant</h4>
+        <p>Compact setup for small-scale production and testing of detergent cakes and powders.</p>
+      </div>
+    </a>
+
+    <!-- Card 5 -->
+    <a href="#mini-hydro-stamping" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-5.jpeg" alt="">
+        <h4>Cage Mill</h4>
+        <p>Grinds and blends raw materials into a uniform powder for detergent production.</p>
+      </div>
+    </a>
+
+    <!-- Card 6 -->
+    <a href="#pedal-stamping" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-6.jpeg" alt="">
+        <h4>Vacuum System</h4>
+        <p>Removes air and moisture to ensure dense, smooth & defect-free soap bars.</p>
+      </div>
+    </a>
+
+    <!-- Card 7 -->
+    <a href="#dual-color-plodder" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-7.jpeg" alt="">
+        <h4>Pneumatic Stamping Machine</h4>
+        <p>Air-powered machine for fast and consistent soap bar stamping</p>
+      </div>
+    </a>
+
+    <!-- Card 8 -->
+    <a href="#blank-title" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-8.jpeg" alt="">
+        <h4>Pilot Sulphonation Plant</h4>
+        <p>Compact unit for testing and development of sulphonated surfactants.</p>
+      </div>
+    </a>
+
+    <!-- Card 9 -->
+    <a href="#pilot-plodder" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-9.jpeg" alt="">
+        <h4>Pilot Detergent Cake Skid Mounted</h4>
+        <p>Portable setup for small-scale detergent cake formulation and trials.</p>
+      </div>
+    </a>
+
+    <!-- Card 10 -->
+    <a href="#hand-stamping-machine" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-10.jpeg" alt="">
+        <h4>Soap Dies</h4>
+        <p>We design all types of custom dies for soap and detergent industry applications.</p>
+
+      </div>
+    </a>
+
+    <!-- Card 11 -->
+    <a href="#mini-hydro-stamping" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-11.jpeg" alt="">
+        <h4>Plough Shear Mixer</h4>
+        <p>High-efficiency mixer for uniform blending of powder and semi-solid materials.</p>
+      </div>
+    </a>
+
+    <!-- Card 12 -->
+    <a href="#pedal-stamping" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-12.jpeg" alt="">
+        <h4>Cyclone Seperator with Basket</h4>
+        <p>Separates dust and fine particles from air or product stream using centrifugal force.</p>
+   
+      </div>
+    </a>
+
+    <!-- Card 13 -->
+    <a href="#pedal-stamping" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-13.jpeg" alt="">
+        <h4>Toilet Soap Dies</h4>
+        <p>Precision dies designed for branding and shaping toilet soap bars.</p>
+
+      </div>
+    </a>
+
+    <!-- Card 14 -->
+    <a href="#pedal-stamping" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-14.jpeg" alt="">
+        <h4>Belt Conveyer</h4>
+        <p>Smooth and continuous material transfer system for soap production lines.</p>
+      </div>
+    </a>
+
+    <!-- Card 15 -->
+    <a href="#pedal-stamping" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-15.jpeg" alt="">
+        <h4>Soap Line Chillers</h4>
+        <p>Industrial chillers for efficient cooling in soap extrusion and stamping processes.</p>
+      </div>
+    </a>
+
+
+
+    <!-- Repeat cards for infinite scroll effect -->
+
+ 
+
+     <!-- Card 1 -->
+    <a href="#roll-mill" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-1.jpeg" alt="">
+        <h4>Roll Mill</h3>
+      <p>Ensures uniform mixing of soap mass with refined texture.</p>
+       <!--<span class="read-more">Read More</span> --> 
+      </div>
+    </a>
+
+    <!-- Card 2 -->
+    <a href="#vacuum-plodder" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-2.jpeg" alt="">
+        <h4>Vacuum Plodder</h4>
+        <p>High precision machinery unit for soap making.</p>
+      </div>
+    </a>
+
+    <!-- Card 3 -->
+    <a href="#pilot-vacuum" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-3.jpeg" alt="">
+        <h4>Pilot Vacuum Spray Dryer</h4>
+        <p>Small-scale soap development machine.</p>
+      </div>
+    </a>
+
+    <!-- Card 4 -->
+    <a href="#detergent-cake" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-4.jpeg" alt="">
+        <h4>Detergent Cake & Powder Skid Mounted Pilot Plant</h4>
+        <p>Compact setup for small-scale production and testing of detergent cakes and powders.</p>
+      </div>
+    </a>
+
+    <!-- Card 5 -->
+    <a href="#cage-mill" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-5.jpeg" alt="">
+        <h4>Cage Mill</h4>
+        <p>Grinds and blends raw materials into a uniform powder for detergent production.</p>
+      </div>
+    </a>
+
+    <!-- Card 6 -->
+    <a href="#vacuum-system" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-6.jpeg" alt="">
+        <h4>Vacuum System</h4>
+        <p>Removes air and moisture to ensure dense, smooth & defect-free soap bars.</p>
+      </div>
+    </a>
+
+    <!-- Card 7 -->
+    <a href="stamping-machine" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-7.jpeg" alt="">
+        <h4>Pneumatic Stamping Machine</h4>
+        <p>Air-powered machine for fast and consistent soap bar stamping</p>
+      </div>
+    </a>
+
+    <!-- Card 8 -->
+    <a href="#sulphonation-plant" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-8.jpeg" alt="">
+        <h4>Pilot Sulphonation Plant</h4>
+        <p>Compact unit for testing and development of sulphonated surfactants.</p>
+      </div>
+    </a>
+
+    <!-- Card 9 -->
+    <a href="#pilot-detergent" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-9.jpeg" alt="">
+        <h4>Pilot Detergent Cake Skid Mounted</h4>
+        <p>Portable setup for small-scale detergent cake formulation and trials.</p>
+      </div>
+    </a>
+
+    <!-- Card 10 -->
+    <a href="#soap-dies" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-10.jpeg" alt="">
+        <h4>Soap Dies</h4>
+        <p>We design all types of custom dies for soap and detergent industry applications.</p>
+
+      </div>
+    </a>
+
+    <!-- Card 11 -->
+    <a href="#shear-mixer" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-11.jpeg" alt="">
+        <h4>Plough Shear Mixer</h4>
+        <p>High-efficiency mixer for uniform blending of powder and semi-solid materials.</p>
+      </div>
+    </a>
+
+    <!-- Card 12 -->
+    <a href="#cyclone-seperator" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-12.jpeg" alt="">
+        <h4>Cyclone Seperator with Basket</h4>
+        <p>Separates dust and fine particles from air or product stream using centrifugal force.</p>
+   
+      </div>
+    </a>
+
+    <!-- Card 13 -->
+    <a href="#toilet-soap-dies" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-13.jpeg" alt="">
+        <h4>Toilet Soap Dies</h4>
+        <p>Precision dies designed for branding and shaping toilet soap bars.</p>
+
+      </div>
+    </a>
+
+    <!-- Card 14 -->
+    <a href="#belt-conveyer" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-14.jpeg" alt="">
+        <h4>Belt Conveyer</h4>
+        <p>Smooth and continuous material transfer system for soap production lines.</p>
+      </div>
+    </a>
+
+    <!-- Card 15 -->
+    <a href="#soap-line-chillers" class="product-link">
+      <div class="product-card">
+        <img src="assets/images/services/img-15.jpeg" alt="">
+        <h4>Soap Line Chillers</h4>
+        <p>Industrial chillers for efficient cooling in soap extrusion and stamping processes.</p>
+      </div>
+    </a>
+
+   
+
+  </div>
+</div>
+
+
                         </div>
 
                         <div class="view-all">
-                            <p>Please check out our <a href="#">All Services</a></p>
+                            <p>Please check out our <a href="#">All Products</a></p>
                         </div>
                     </div>
                 </div>

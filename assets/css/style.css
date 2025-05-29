@@ -131,7 +131,9 @@ body {
 }
 
 p {
-  color: #777777;
+
+  font-family: "Roboto", sans-serif;
+  color: #2b2929;
   line-height: 1.8em;
 }
 

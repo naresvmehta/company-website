@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Soap Processes</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      padding: 40px;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .steps {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .step-button {
+      padding: 10px 15px;
+      background: #eee;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.3s;
+    }
+    .step-button:hover {
+      background: #ddd;
+    }
+    .step-button.active {
+      background: #333;
+      color: white;
+    }
+    .description-box {
+      flex: 2;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      min-height: 150px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="steps">
+      <button class="step-button active" onclick="showStep(0)">Fully Boiled Saponification</button>
+      <button class="step-button" onclick="showStep(1)">Semi Boiled Saponification</button>
+      <button class="step-button" onclick="showStep(2)">Fatty Acid Neutralisation</button>
+      <button class="step-button" onclick="showStep(3)">Toilet Soap Vacuum Drying</button>
+    </div>
+
+    <div class="description-box" id="description">
+      <strong>Fully Boiled Saponification:</strong><br>
+      This batch process uses caustic lye to saponify oils. After settling, the soap separates from glycerine water. The soap is then further processed.
+    </div>
+  </div>
+
+  <script>
+    const descriptions = [
+      `<strong>Fully Boiled Saponification:</strong><br>This batch process uses caustic lye to saponify oils. After settling, the soap separates from glycerine water. The soap is then further processed.`,
+      `<strong>Semi Boiled Saponification:</strong><br>Oils are partially saponified without boiling. Simpler than fully boiled method, used for faster production.`,
+      `<strong>Fatty Acid Neutralisation:</strong><br>This method uses fatty acids and caustic soda to form neat soap, useful in modern continuous production.`,
+      `<strong>Toilet Soap Vacuum Drying:</strong><br>Removes moisture from soap under vacuum, producing high-quality, uniform soap for finishing.`
+    ];
+
+    function showStep(index) {
+      document.getElementById("description").innerHTML = descriptions[index];
+      document.querySelectorAll('.step-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.step-button')[index].classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
