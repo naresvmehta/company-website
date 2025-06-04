@@ -1,0 +1,82 @@
+<% layout('layouts/boilerplate') %>
+
+<!-- start contact-pg-section -->
+        <section class="contact-pg-section section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-lg-5 col-md-6 col-sm-8">
+                        <div class="section-title">
+                            <span>Contact With Us</span>
+                            <h2>Call Us Or Fill The Form</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-md-7">
+                       <form method="POST" action="/submit" class="contact-validation-active" id="contact-form-main">
+  <div>
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" name="contact[name]" id="name" placeholder="Name*" required>
+  </div>
+  <div>
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" name="contact[email]" id="email" placeholder="Email*" required>
+  </div>
+  <div>
+    <label for="phone" class="form-label">Phone</label>
+    <input type="tel"  pattern="[0-9+()\- ]{7,15}" class="form-control" name="contact[phone]" id="phone" placeholder="Phone No*" required>
+     
+  </div>
+  <div>
+    <label for="inquiryType" class="form-label">Inquiry Type</label>
+    <select name="contact[inquiryType]" id="inquiryType" class="form-control" required>
+      <option value="" disabled selected>Select an option</option>
+      <option value="General">General Inquiry</option>
+      <option value="Partnership">Partnership</option>
+      <option value="Support">Support</option>
+      <option value="Quote">Request a Quote</option>
+    </select>
+  </div>
+  <div class="fullwidth">
+    <label for="note" class="form-label">Description</label>
+    <textarea class="form-control" name="contact[note]" id="note" placeholder="Case Description..." required></textarea>
+  </div>
+  
+    <button type="submit" class="theme-btn" id="submit-btn">Submit Now</button>
+</form>
+                    </div>  
+
+                    <div class="col col-md-5" id="office-section">
+                        <div class="office-info" id="office-info">
+                            <div>
+                                <h3>Patil Machines Pvt Ltd</h3><br>
+                                <ul>
+                                    <li><i class="ti-location-pin"></i> Plot No. 36-D, Kandivali Co-op. Indl. Estate, Charkop, Kandivali (W), Mumbai - 400 067. India</li><br>
+                                    <li><i class="ti-mobile"></i> <span>Tel:</span> +91(22) 2869 7865/66, <br> +91(22) 2868 3991</li><br>
+                                    <li><i class="ti-email"></i> <span>Email:</span> info@patilmachines.com <br>ashis@patilmachines.com</li><br>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>                  
+                </div>
+            </div> <!-- end container -->
+        </section>
+        <!-- end contact-pg-section -->
+
+
+        <!--  start contact-map -->
+        <section class="contact-map-section">
+            <h2 class="hidden">Contact map</h2>
+            <div class="contact-map">
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.7043760133706!2d72.82173477607904!3d19.208110182023777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b6240fa2a667%3A0x1478f883d5a91a9c!2sPATIL%20MACHINES%20PVT.%20LTD.%20(%20former%20Precision%20Machinists)!5e0!3m2!1sen!2sin!4v1747741750211!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+        <!-- end contact-map -->
+
+<script>
+  const phoneInput = document.querySelector('input[type="tel"]');
+phoneInput.addEventListener('input', () => {
+  phoneInput.value = phoneInput.value.replace(/[^0-9+()\- ]/g, '');
+});
+
+</script>

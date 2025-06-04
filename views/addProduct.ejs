@@ -1,0 +1,52 @@
+<%- layout("layouts/boilerplate") %>
+
+<div class="container" style="margin-top: 30px; margin-bottom: 50px;">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Add New Product</h3>
+    </div>
+
+    <div class="panel-body">
+      <form action="/products" method="POST" enctype="multipart/form-data">
+        <!-- Plant Title -->
+        <div class="form-group">
+          <label for="title">Plant Name<small class="text-muted">(Required)</small></label>
+          <input type="text" name="title" id="title" class="form-control" placeholder="Enter plant name" required>
+        </div>
+
+        <!-- Main Cover Image -->
+        <div class="form-group">
+          <label for="coverImage">Main Cover Image<small class="text-muted">(Required)</small></label>
+          <input type="file" name="coverImage" id="coverImage" class="form-control" accept="image/*" required>
+        </div>
+
+        <!-- Long Description -->
+        <div class="form-group">
+          <label for="description">Detailed Description <small class="text-muted">(Insert images at the desired cursor position for proper display)</small></label>
+          <textarea name="description" id="description" rows="10" class="form-control" placeholder="Describe the plant, upload images, etc."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success btn-block">Add Product</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- CKEditor 5 (Classic) -->
+<script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+<script>
+  ClassicEditor
+    .create(document.querySelector('#description'), {
+      ckfinder: {
+        uploadUrl: '/upload-image' // Your route
+      },
+      toolbar: [
+        'heading', '|', 'bold', 'italic', 'bulletedList', 'numberedList', '|',
+        'insertTable', 'blockQuote', '|', 'imageUpload', 'undo', 'redo'
+      ]
+    })
+    .catch(error => {
+      console.error(error);
+    });
+</script>
+

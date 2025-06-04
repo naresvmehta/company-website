@@ -1,0 +1,20 @@
+<%- layout("layouts/boilerplate") %>
+
+<div class="container" style="margin-top: 40px; margin-bottom: 60px;">
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <h3 class="panel-title text-danger">Confirm Deletion</h3>
+    </div>
+
+    <div class="panel-body text-center">
+      <p>Are you sure you want to permanently delete this product?</p>
+      <h4 style="color: #d32f2f;"><%= product.title %></h4>
+      <img src="<%= product.coverImage.url %>" class="img-responsive" style="max-height: 250px; margin: 15px auto; border-radius: 8px;">
+
+      <form action="/products/<%= product._id %>?_method=DELETE" method="POST" style="margin-top: 20px;">
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a href="/products/<%= product._id %>" class="btn btn-default">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>
