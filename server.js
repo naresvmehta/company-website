@@ -5,8 +5,15 @@ if (process.env.NODE_ENV !== 'production') {
 
 const express = require('express');
 const mongoose = require("mongoose");
-const { google } = require('googleapis');
-const sendEnquiryMail=require("./sendEnquiryMail.js");
+
+const ExpressError = require("./utils/ExpressError.js");
+
+const {productSchema, loginSchema, enquirySchema} = require("./schema.js");
+
+const productController = require("./controllers/product.js");
+const adminController = require("./controllers/admin.js");
+const enquiryController = require("./controllers/enquiry.js");
+const staticController = require("./controllers/static");
 
 const path = require('path');
 
@@ -65,12 +72,10 @@ app.use(flash());
 
 
 const {upload}=require("./cloudinaryConfig.js");
-
-const { cloudinary } = require("./cloudinaryConfig.js");
 const multer = require("multer");
 const uploadBuffer = multer(); // For CKEditor (in-memory buffer)
 
-const Product = require("./models/product.js");
+
 
 //Global Middleware
 
@@ -92,331 +97,113 @@ const isAdmin = (req,res,next) => {
   next();
 }
 
-//HTTP ROUTES
+//HTTP Static ROUTES
 
-//Redirect / to /home
 
-app.get("/", (req,res)=>{
-  res.redirect("/home");
-})
+app.get("/", staticController.redirectToHome);
+app.get("/home", staticController.renderHome);
+app.get("/about", staticController.renderAbout);
+app.get("/contact", staticController.renderContact);
 
-//Home Page
-app.get("/home", (req,res)=>{
-  res.render("home.ejs", {title:false});
-})
 
-//About Page
-app.get("/about", (req,res) => {
-  res.render("about.ejs", {title: "About Us"});
-})
+//Validate Login Page
 
-//Contact Page
-
-app.get("/contact", (req,res)=>{
-  res.render("contact.ejs", {title: "Contact"});
-})
-
-//Login Page 
-
-app.get("/login", (req,res)=>{
-  res.render("login.ejs");
-})
-
-app.post("/login", (req,res)=>{
-  const username = req.body.username;
-  const password = req.body.password;
-  
-  if(username == process.env.ADMIN_USERNAME && password == process.env.ADMIN_PASSWORD){
-    req.session.admin=true;
-    req.flash("success", "Welcome back Admin!");
-    return res.redirect("/home");
+const validateLogin = (req,res,next) =>{
+  const {error} = loginSchema.validate(req.body);
+  if(error){
+    req.flash("error", error.details.map(d => d.message).join(", "));
+    return res.redirect("/login");
   }
-  req.flash("error", "Invalid Login Credentials");
-  res.redirect("/login");
-})
+  next();
+}
+
+app.get("/login", adminController.renderLoginPage);
+
+app.post("/login", validateLogin, adminController.login);
+
+app.post("/logout", isAdmin, adminController.logout);
 
 
-//Logout Page 
 
-//POST Req to prevent Cross-Site Request Forgery (CSRF) attack
-
-app.post('/logout', isAdmin, (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      console.log(err);
-      req.flash("error", "Something went wrong");
-      return res.redirect('/login'); 
-    }
-    res.clearCookie("connect.sid"); //Clear the admin session cookie
-    res.redirect('/home'); 
-  });
-});
+//Validate Product (Server-side validation)
 
 
-//Render Add Product Form
+const validateProduct = (req,res,next) =>{
+  const {error} = productSchema.validate(req.body);
+  if(error){
+  req.flash("error", error.details.map(d => d.message).join(", "));
+  return res.redirect("/products");
+  }else{
+    next();
+  }
+}
 
-app.get("/products/add", isAdmin, (req,res)=>{
-  res.render("addProduct.ejs", {title: "Add New Products"});
-})
 
 
-// Handle Add Product form submission
+// 1. List all products
+app.get("/products", productController.index);
 
-app.post("/products",isAdmin, upload.single("coverImage"), async (req, res) => {
-  try {
-    const { title, description } = req.body;
-    const coverImage = {
-         url: req.file.path,
-         filename: req.file.filename
+// 2. Show Add Product form
+app.get("/products/add", isAdmin, productController.renderAddProductForm);
+
+// 3. Handle Add Product form submission
+app.post("/products", isAdmin, upload.single("coverImage"), validateProduct, productController.createProduct);
+
+// 4. Upload image for CKEditor (not product-specific)
+app.post("/upload-image", isAdmin, uploadBuffer.single("upload"), productController.uploadDescriptionImage);
+
+// 5. Show Edit form — must be before /products/:id
+app.get("/products/:id/edit", isAdmin, productController.renderEditForm);
+
+// 6. Show Delete confirmation page — before /products/:id
+app.get("/products/:id/delete", isAdmin, productController.renderDeleteForm);
+
+// 7. Handle Product Update
+app.put("/products/:id", isAdmin, upload.single("coverImage"), validateProduct, productController.updateProduct);
+
+// 8. Delete Product
+app.delete("/products/:id", isAdmin, productController.deleteProduct);
+
+// 9. Show individual product (must be last!)
+app.get("/products/:id", productController.showProduct);
+
+
+
+
+
+//Validate Enquiry Form
+
+const validateEnquiry = (req, res, next) => {
+  const { error } = enquirySchema.validate(req.body, { abortEarly: false });
+
+  if (error) {
+    // Collect all error messages into a single string
+    const errorMessages = error.details.map(d => d.message).join(', ');
+    req.flash('error', errorMessages);
+    
+    // Redirect back to the form page (adjust if your form route is different)
+    return res.redirect("/contact");
+  }
+
+  next();
 };
 
-    const product = new Product({ title, description, coverImage });
-    await product.save();
 
-    req.flash("success", "New product added successfully!");
-    res.redirect("/products");
-  } catch (err) {
-    console.error(err);
-    req.flash("error", "Failed to add plant. Please try again.");
-    res.redirect("/products/new");
-  }
-});
+app.post('/submit', validateEnquiry, enquiryController.submitEnquiry);
 
-// CKEditor Upload Route
-app.post("/upload-image", isAdmin, uploadBuffer.single("upload"), async (req, res) => {
-  try {
-    const stream = cloudinary.uploader.upload_stream(
-      { folder: "PatilMachines/Description" },
-      (error, result) => {
-        if (error) {
-          console.error(error);
-          return res.status(500).json({ uploaded: false, error: { message: "Upload failed." } });
-        }
 
-        // Return with both url & default for CKEditor compatibility
-        return res.json({
-          uploaded: true,
-          url: result.secure_url,
-          default: result.secure_url
-        });
-      }
-    );
-    stream.end(req.file.buffer); // in-memory buffer
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ uploaded: false, error: { message: err.message } });
-  }
-});
-
-//Render Edit Product Form
-
-app.get("/products/:id/edit", isAdmin, async(req,res)=>{
-  try{
-    const {id} = req.params;
-    const product = await Product.findById(id);
-
-    if(!product){
-      req.flash("error", "Product not found");
-      return res.redirect("/products");
-    }
-   res.render("editProduct.ejs", {title:"Edit Form", product});
-   }
-   catch(err){
-    console.error("Error in opening the Edit Form", err);
-    req.flash("error", "Something went wrong. Please try again later");
-    res.redirect(`/products/${id}`);
-   }
+/*Global middleware
+app.all("*", (req,res, next)=>{
+  next(new ExpressError(404,"Page Not Found!"));
 })
 
-//Edit Product
-app.put("/products/:id", upload.single("coverImage"), isAdmin, async (req, res) => {
-  const { id } = req.params;
-  const { title, description } = req.body;
-  const product = await Product.findById(id);
+//Error handling middleware
 
-  if (!product) {
-    req.flash("error", "Product not found");
-    return res.redirect("/products");
-  }
-
-  product.title = title;
-  product.description = description;
-
-  if (req.file) {  //If new image exists
-
-    // Delete old image from Cloudinary
-    await cloudinary.uploader.destroy(product.coverImage.filename);
-    // Update with new image
-    product.coverImage = {
-      url: req.file.path,
-      filename: req.file.filename
-    };
-  }
-
-  await product.save();
-  req.flash("success", "Product details updated successfully");
-  res.redirect(`/products/${id}`);
-});
-
-//Show Deletion Confirmation Mssg
-
-app.get("/products/:id/delete",isAdmin, async (req, res) => {
-  try {
-    const { id } = req.params;
-    const product = await Product.findById(id);
-
-    if (!product) {
-      req.flash("error", "Product not found.");
-      return res.redirect("/products");
-    }
-
-    res.render("deleteProduct.ejs", { title: "Delete Product", product });
-  } catch (err) {
-    console.error("Error loading delete page:", err);
-    req.flash("error", "Something went wrong.");
-    res.redirect("/products");
-  }
-});
-
-//Delete the Product (From both Cloudinary & DB)
-
-app.delete("/products/:id",isAdmin, async (req, res) => {
-  try {
-    const { id } = req.params;
-    const product = await Product.findById(id);
-
-    if (!product) {
-      req.flash("error", "Product not found.");
-      return res.redirect("/products");
-    }
-
-    // Delete cover image from Cloudinary
-    await cloudinary.uploader.destroy(product.coverImage.filename);
-
-    // Delete product from DB
-    await Product.findByIdAndDelete(id);
-
-    req.flash("success", "Product deleted successfully.");
-    res.redirect("/products");
-  } catch (err) {
-    console.error("Error deleting product:", err);
-    req.flash("error", "Failed to delete product.");
-    res.redirect("/products");
-  }
-});
-
-
-
-
-//Products Page
-
-app.get("/products", async (req,res)=>{
-
-  try{
- const products = await Product.find({});
-  res.render("product.ejs", {title: "Our Products", products});
-  }
-  catch(err)
-  {
-    console.error(err);
-    req.flash("error", "Failed to load products!");
-    res.redirect("/home");
-  }
-})
-
-//Show individual product
-
-app.get("/products/:id", async(req,res)=>{
-  try{
-     let {id} = req.params;
-
-     const product = await Product.findById(id);
-
-     if(!product){
-      req.flash("error", "Product does not exist!");
-      return res.redirect("/products");
-     }
-
-     res.render("showProduct.ejs", {title:product.title, product});
-  }
- catch(err){
-  console.error("Error fetching product by ID: ", err);
-  req.flash("error", "Something went wrong");
-  res.redirect("/products");
- }
-
-})
-
-
-
-//Google Sheets Auth
-
-const auth = new google.auth.JWT(
-  process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL, // Correct env variable name
-  null,
-  // Replace literal \\n with actual newline characters in the private key
-  process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-  ['https://www.googleapis.com/auth/spreadsheets'] // scope for editing sheets
-);
-
-const sheets = google.sheets({ version: 'v4', auth });
-
-
-app.post('/submit', async (req, res) => {
-
-   const backURL = req.get('Referer') || '/home';
-
-  try {
-    const contact = req.body.contact || {};
-    const phone = contact.phone || ''; // Fix: get phone from contact
-
-    const now = new Date();
-
-    const formattedDate = now.toLocaleString('en-IN', {
-  timeZone: 'Asia/Kolkata',
-  day: '2-digit',
-  month: '2-digit',
-  year: 'numeric',
-  hour: '2-digit',
-  minute: '2-digit',
-  hour12: true,
-});
-
-    const values = [
-      [
-        contact.name || '',
-        contact.email || '',
-        phone,
-        contact.inquiryType || '',
-        contact.note || '',
-         formattedDate
-      ],
-    ];
-
-    console.log('Appending row:', values);  // Debug
-
-    await sheets.spreadsheets.values.append({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Sheet1!A:F',
-      valueInputOption: 'USER_ENTERED',
-      requestBody: {
-        values,
-      },
-    });
-
-    await sendEnquiryMail(contact, phone, formattedDate);
-
-    console.log("Form data appended successfully");
-    // Send success response to frontend
-    req.flash("success", "Thank you for contacting us! We'll get back to you shortly");
-
-    res.redirect(backURL);   //Redirect either back to Home Page/Contact Page
-  } catch (error) {
-    console.error('Error appending data to Google Sheet:', error);
-    req.flash("error", "Something went wrong. Please try again later");
-    res.redirect(backURL);
-  }
-});
+app.use((err,req,res,next)=>{
+  let {statusCode=500, message="Something went wrong!"} = err;
+  res.status(statusCode).render("error.ejs", {err, title:"Something went wrong"});
+  console.log(err);
+})       */
 
 
 //Connecting to the Database
