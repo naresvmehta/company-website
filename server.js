@@ -2,6 +2,7 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 
+const rateLimit = require('express-rate-limit');
 
 const express = require('express');
 const mongoose = require("mongoose");
@@ -188,22 +189,35 @@ const validateEnquiry = (req, res, next) => {
   next();
 };
 
+// Rate limiter for contact form submissions
+const contactFormLimiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 minutes
+  max: 10, // limit each IP to 10 requests per windowMs (So max 10 requests in 10 mins)
+ handler: (req, res, next) => {
+  const backUrl = req.get("Referer") || "/contact";
+  req.flash('error', "Too many enquiries sent from this IP. Please try again after 10 minutes");
+  req.session.save(() => res.redirect(backUrl)); //Ensures flash messages are saved in sessions before redirecting
+},
+  standardHeaders: true,  // modern rate limit headers
+  legacyHeaders: false,   // disable old headers
+});
 
-app.post('/submit', validateEnquiry, enquiryController.submitEnquiry);
+app.post('/submit', contactFormLimiter, validateEnquiry, enquiryController.submitEnquiry);
 
 
-/*Global middleware
-app.all("*", (req,res, next)=>{
-  next(new ExpressError(404,"Page Not Found!"));
-})
+//Global middleware
+
+app.use((req, res, next) => {
+  next(new ExpressError(404, "Sorry, the page you are looking for does not exist"));
+});
 
 //Error handling middleware
 
 app.use((err,req,res,next)=>{
   let {statusCode=500, message="Something went wrong!"} = err;
-  res.status(statusCode).render("error.ejs", {err, title:"Something went wrong"});
+  res.status(statusCode).render("error.ejs", {err});
   console.log(err);
-})       */
+})      
 
 
 //Connecting to the Database

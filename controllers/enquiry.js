@@ -44,10 +44,18 @@ module.exports.submitEnquiry = async (req, res) => {
       requestBody: { values },
     });
 
-    await sendEnquiryMail(contact, phone, formattedDate);
+// Flash message and session save
+req.flash("success", "Thank you for contacting us! We'll get back to you shortly");
 
-    req.flash("success", "Thank you for contacting us! We'll get back to you shortly");
-    res.redirect(backURL);
+req.session.save(() => {
+  res.redirect(backURL);  //Ensures flash mssgs are saved in sessions before redirecting
+});
+
+// Send email after response, non-blocking (Fire & Forget)
+sendEnquiryMail(contact, phone, formattedDate)
+  .then(() => console.log("Enquiry email sent"))
+  .catch(err => console.error("Failed to send email:", err));
+
 
   } catch (error) {
     console.error('Error appending data to Google Sheet:', error);
