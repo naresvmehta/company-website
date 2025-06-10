@@ -10,8 +10,9 @@
   "license": "ISC",
   "description": "",
   "engines": {
-    "node": "22.x"
-  },
+  "node": ">=18.x",
+  "npm": ">=9.0.0"
+},
   "dependencies": {
     "body-parser": "2.2.0",
     "cloudinary": "1.41.3",
