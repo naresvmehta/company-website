@@ -1254,7 +1254,7 @@ img {
 }
 
 .theme-accordion-s1 .panel-heading a {
-  background: #fd5f17;
+  background: #0d882c;
   font-size: 16px;
   font-size: 1rem;
   font-weight: 600;
@@ -3491,7 +3491,7 @@ img {
 #1.2	fun-fact-section
 --------------------------------------------------------------*/
 .fun-fact-section .fun-fact-grids .grid {
-  background-color: #fd5f17;
+  background-color: #18a346;
   width: 25%;
   float: left;
   padding: 35px 25px 35px 95px;
@@ -3519,7 +3519,7 @@ img {
 }
 
 .fun-fact-section .fun-fact-grids > .grid:nth-child(even) {
-  background-color: #f84f02;
+  background-color: #3bca6a;
 }
 
 .fun-fact-section .fun-fact-grids .fi {

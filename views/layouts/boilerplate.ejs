@@ -70,3 +70,82 @@
 
 </body>
 </html>
+
+<!--CK Editor Styling-->
+
+<style>
+  .ck-content ul {
+    list-style: disc;
+    margin-left: 20px;
+  }
+  .ck-content ol {
+    list-style: decimal;
+    margin-left: 20px;
+  }
+
+  .ck-content ul li::marker {
+    color: black; /* Or any color you want */
+  }
+
+  .ck-content ol li::marker {
+    color: black;
+  }
+
+  .panel-body ul {
+    list-style: disc;
+    margin-left: 20px;
+    padding-left: 20px;
+  }
+
+  .panel-body ol {
+    list-style: decimal;
+    margin-left: 20px;
+    padding-left: 20px;
+  }
+
+  .panel-body li {
+    color: #000000; /* or black or #212121 for better readability */
+    font-size: 16px;
+  }
+
+  .panel-body p {
+    color: #000000;
+    font-size: 16px;
+  }
+
+  .panel-body table {
+  width: 100%;           /* Full width */
+  border-collapse: collapse;  /* Merge borders */
+  margin-bottom: 1em;
+  font-size: 16px;
+  border: 1px solid #ddd;
+}
+
+.panel-body th,
+.panel-body td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.panel-body th {
+  background-color: #4CAF50; /* matching your green header */
+  color: white;
+}
+
+.panel-body tr:nth-child(even) {
+  background-color: #f9f9f9; /* striped rows */
+}
+
+.ck-content table,
+.ck-content th,
+.ck-content td,
+.panel-body table,
+.panel-body th,
+.panel-body td {
+  font-size: 16px;
+  color: black !important;
+}
+
+</style>
+

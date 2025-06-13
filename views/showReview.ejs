@@ -1,0 +1,225 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<!-- Google Font for buttons -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+<section class="testimonials" style="padding: 60px 0; background: #f8f9fa;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1 text-center">
+        <h2 style="color: #2e7d32; margin-bottom: 20px; font-weight: 600;">TESTIMONIALS</h2>
+        <p class="lead" style="color: #555; margin-bottom: 40px; font-size: 20px;">
+          What our clients say about us
+        </p>
+      </div>
+    </div>
+
+    <div class="row equal-height">
+      <% reviews.forEach(function(review) { %>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="card testimonial-card">
+            <div class="card-up" style="background: #2E7D32;"></div>
+            <div class="avatar">
+              <div class="profile-icon">
+                <% if (!review.clientPhoto || !review.clientPhoto.url) { %>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#7f7f7f">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                  </svg>
+                <% } else { %>
+                  <img src="<%= review.clientPhoto.url %>" alt="Client Photo"
+                       style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                <% } %>
+              </div>
+            </div>
+            <div class="card-body">
+              <h4><%= review.clientName %></h4>
+              <hr>
+              <p class="testimonial-text">
+                <i class="glyphicon glyphicon-quote-left"></i> <%= review.clientReview %>
+              </p>
+
+              <% if(admin){ %>
+                <div class="admin-controls">
+                  <a href="/reviews/<%= review._id %>/edit" class="btn-edit">Edit</a>
+                  <form action="/reviews/<%= review._id %>?_method=DELETE" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this Review?')">
+                    <button type="submit" class="btn-delete">Delete</button>
+                  </form>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Equal height cards */
+  .equal-height {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .equal-height > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonial-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .testimonial-text {
+    flex: 1;
+  }
+
+  /* Profile Icon Styles */
+  .profile-icon {
+    width: 100px;
+    height: 100px;
+    background: #f0f0f0;
+    border-radius: 50%;
+    margin: 0 auto;
+    border: 5px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profile-icon svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Card Styles */
+  .testimonial-card {
+    background: white;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .card-up {
+    height: 100px;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .avatar {
+    width: 110px;
+    margin: -50px auto 0;
+  }
+
+  .card-body {
+    padding: 20px;
+    margin-top: 10px;
+  }
+
+  .card-body h4 {
+    color: #2E7D32;
+    margin: 15px 0;
+    font-weight: 600;
+  }
+
+  .card-body hr {
+    border-color: #e0e0e0;
+    width: 50px;
+    margin: 15px auto;
+  }
+
+  .card-body p {
+    color: #141313;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .glyphicon-quote-left {
+    color: #4CAF50;
+    margin-right: 5px;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  }
+
+  /* Admin controls */
+  .admin-controls {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .admin-controls a,
+  .admin-controls button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+
+  .btn-edit {
+    background: #43A047;
+    color: white;
+  }
+
+  .btn-edit:hover {
+    background: #2e7d32;
+  }
+
+  .btn-delete {
+    background: #e53935;
+    color: white;
+  }
+
+  .btn-delete:hover {
+    background: #b71c1c;
+  }
+
+  /* Responsive: Force 1 card per row */
+  @media (max-width: 767px) {
+    .equal-height {
+      flex-direction: column;
+    }
+
+    .equal-height > [class*='col-'] {
+      width: 100%;
+    }
+
+    .testimonial-card {
+      margin-bottom: 50px;
+    }
+
+    .profile-icon {
+      width: 80px;
+      height: 80px;
+    }
+
+    .profile-icon svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    .avatar {
+      width: 90px;
+      margin-top: -40px;
+    }
+  }
+</style>

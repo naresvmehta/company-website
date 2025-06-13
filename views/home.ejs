@@ -182,291 +182,22 @@ Built on decades of experience, driven by innovation.</p>
 <div class="marquee-wrapper">
   <div class="marquee">
 
-    
-
-    <!-- Card 1 -->
-    <a href="#dual-color-plodder" class="product-link">
+   <% if (products && products.length > 0) { %>
+  <% for (let i = 0; i < 2 * products.length; i++) { 
+       const product = products[i % products.length]; 
+  %>
+    <a href="/products/<%= product._id %>" class="product-link">
       <div class="product-card">
-        <img src="assets/images/services/img-1.jpeg" alt="">
-        <h4>Roll Mill</h3>
-      <p>Ensures uniform mixing of soap mass with refined texture.</p>
-       <!--<span class="read-more">Read More</span> --> 
+        <img src="<%= product.coverImage.url %>" alt="<%= product.title %>">
+        <h4><%= product.title %></h4>
       </div>
     </a>
-
-    <!-- Card 2 -->
-    <a href="#blank-title" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-2.jpeg" alt="">
-        <h4>Vacuum Plodder</h4>
-        <p>High precision machinery unit for soap making.</p>
-      </div>
-    </a>
-
-    <!-- Card 3 -->
-    <a href="#pilot-plodder" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-3.jpeg" alt="">
-        <h4>Pilot Vacuum Spray Dryer</h4>
-        <p>Small-scale soap development machine.</p>
-      </div>
-    </a>
-
-    <!-- Card 4 -->
-    <a href="#hand-stamping-machine" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-4.jpeg" alt="">
-        <h4>Detergent Cake & Powder Skid Mounted Pilot Plant</h4>
-        <p>Compact setup for small-scale production and testing of detergent cakes and powders.</p>
-      </div>
-    </a>
-
-    <!-- Card 5 -->
-    <a href="#mini-hydro-stamping" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-5.jpeg" alt="">
-        <h4>Cage Mill</h4>
-        <p>Grinds and blends raw materials into a uniform powder for detergent production.</p>
-      </div>
-    </a>
-
-    <!-- Card 6 -->
-    <a href="#pedal-stamping" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-6.jpeg" alt="">
-        <h4>Vacuum System</h4>
-        <p>Removes air and moisture to ensure dense, smooth & defect-free soap bars.</p>
-      </div>
-    </a>
-
-    <!-- Card 7 -->
-    <a href="#dual-color-plodder" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-7.jpeg" alt="">
-        <h4>Pneumatic Stamping Machine</h4>
-        <p>Air-powered machine for fast and consistent soap bar stamping</p>
-      </div>
-    </a>
-
-    <!-- Card 8 -->
-    <a href="#blank-title" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-8.jpeg" alt="">
-        <h4>Pilot Sulphonation Plant</h4>
-        <p>Compact unit for testing and development of sulphonated surfactants.</p>
-      </div>
-    </a>
-
-    <!-- Card 9 -->
-    <a href="#pilot-plodder" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-9.jpeg" alt="">
-        <h4>Pilot Detergent Cake Skid Mounted</h4>
-        <p>Portable setup for small-scale detergent cake formulation and trials.</p>
-      </div>
-    </a>
-
-    <!-- Card 10 -->
-    <a href="#hand-stamping-machine" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-10.jpeg" alt="">
-        <h4>Soap Dies</h4>
-        <p>We design all types of custom dies for soap and detergent industry applications.</p>
-
-      </div>
-    </a>
-
-    <!-- Card 11 -->
-    <a href="#mini-hydro-stamping" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-11.jpeg" alt="">
-        <h4>Plough Shear Mixer</h4>
-        <p>High-efficiency mixer for uniform blending of powder and semi-solid materials.</p>
-      </div>
-    </a>
-
-    <!-- Card 12 -->
-    <a href="#pedal-stamping" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-12.jpeg" alt="">
-        <h4>Cyclone Seperator with Basket</h4>
-        <p>Separates dust and fine particles from air or product stream using centrifugal force.</p>
-   
-      </div>
-    </a>
-
-    <!-- Card 13 -->
-    <a href="#pedal-stamping" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-13.jpeg" alt="">
-        <h4>Toilet Soap Dies</h4>
-        <p>Precision dies designed for branding and shaping toilet soap bars.</p>
-
-      </div>
-    </a>
-
-    <!-- Card 14 -->
-    <a href="#pedal-stamping" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-14.jpeg" alt="">
-        <h4>Belt Conveyer</h4>
-        <p>Smooth and continuous material transfer system for soap production lines.</p>
-      </div>
-    </a>
-
-    <!-- Card 15 -->
-    <a href="#pedal-stamping" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-15.jpeg" alt="">
-        <h4>Soap Line Chillers</h4>
-        <p>Industrial chillers for efficient cooling in soap extrusion and stamping processes.</p>
-      </div>
-    </a>
+  <% } %>
+<% } else { %>
+  <p>No products available at the moment.</p>
+<% } %>
 
 
-
-    <!-- Repeat cards for infinite scroll effect -->
-
- 
-
-     <!-- Card 1 -->
-    <a href="#roll-mill" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-1.jpeg" alt="">
-        <h4>Roll Mill</h3>
-      <p>Ensures uniform mixing of soap mass with refined texture.</p>
-       <!--<span class="read-more">Read More</span> --> 
-      </div>
-    </a>
-
-    <!-- Card 2 -->
-    <a href="#vacuum-plodder" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-2.jpeg" alt="">
-        <h4>Vacuum Plodder</h4>
-        <p>High precision machinery unit for soap making.</p>
-      </div>
-    </a>
-
-    <!-- Card 3 -->
-    <a href="#pilot-vacuum" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-3.jpeg" alt="">
-        <h4>Pilot Vacuum Spray Dryer</h4>
-        <p>Small-scale soap development machine.</p>
-      </div>
-    </a>
-
-    <!-- Card 4 -->
-    <a href="#detergent-cake" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-4.jpeg" alt="">
-        <h4>Detergent Cake & Powder Skid Mounted Pilot Plant</h4>
-        <p>Compact setup for small-scale production and testing of detergent cakes and powders.</p>
-      </div>
-    </a>
-
-    <!-- Card 5 -->
-    <a href="#cage-mill" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-5.jpeg" alt="">
-        <h4>Cage Mill</h4>
-        <p>Grinds and blends raw materials into a uniform powder for detergent production.</p>
-      </div>
-    </a>
-
-    <!-- Card 6 -->
-    <a href="#vacuum-system" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-6.jpeg" alt="">
-        <h4>Vacuum System</h4>
-        <p>Removes air and moisture to ensure dense, smooth & defect-free soap bars.</p>
-      </div>
-    </a>
-
-    <!-- Card 7 -->
-    <a href="stamping-machine" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-7.jpeg" alt="">
-        <h4>Pneumatic Stamping Machine</h4>
-        <p>Air-powered machine for fast and consistent soap bar stamping</p>
-      </div>
-    </a>
-
-    <!-- Card 8 -->
-    <a href="#sulphonation-plant" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-8.jpeg" alt="">
-        <h4>Pilot Sulphonation Plant</h4>
-        <p>Compact unit for testing and development of sulphonated surfactants.</p>
-      </div>
-    </a>
-
-    <!-- Card 9 -->
-    <a href="#pilot-detergent" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-9.jpeg" alt="">
-        <h4>Pilot Detergent Cake Skid Mounted</h4>
-        <p>Portable setup for small-scale detergent cake formulation and trials.</p>
-      </div>
-    </a>
-
-    <!-- Card 10 -->
-    <a href="#soap-dies" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-10.jpeg" alt="">
-        <h4>Soap Dies</h4>
-        <p>We design all types of custom dies for soap and detergent industry applications.</p>
-
-      </div>
-    </a>
-
-    <!-- Card 11 -->
-    <a href="#shear-mixer" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-11.jpeg" alt="">
-        <h4>Plough Shear Mixer</h4>
-        <p>High-efficiency mixer for uniform blending of powder and semi-solid materials.</p>
-      </div>
-    </a>
-
-    <!-- Card 12 -->
-    <a href="#cyclone-seperator" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-12.jpeg" alt="">
-        <h4>Cyclone Seperator with Basket</h4>
-        <p>Separates dust and fine particles from air or product stream using centrifugal force.</p>
-   
-      </div>
-    </a>
-
-    <!-- Card 13 -->
-    <a href="#toilet-soap-dies" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-13.jpeg" alt="">
-        <h4>Toilet Soap Dies</h4>
-        <p>Precision dies designed for branding and shaping toilet soap bars.</p>
-
-      </div>
-    </a>
-
-    <!-- Card 14 -->
-    <a href="#belt-conveyer" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-14.jpeg" alt="">
-        <h4>Belt Conveyer</h4>
-        <p>Smooth and continuous material transfer system for soap production lines.</p>
-      </div>
-    </a>
-
-    <!-- Card 15 -->
-    <a href="#soap-line-chillers" class="product-link">
-      <div class="product-card">
-        <img src="assets/images/services/img-15.jpeg" alt="">
-        <h4>Soap Line Chillers</h4>
-        <p>Industrial chillers for efficient cooling in soap extrusion and stamping processes.</p>
-      </div>
-    </a>
 
    
 
@@ -477,13 +208,14 @@ Built on decades of experience, driven by innovation.</p>
                         </div>
 
                         <div class="view-all">
-                            <p>Please check out our <a href="#">All Products</a></p>
+                            <p style="font-size: larger;">Please check out our <a href="/products">All Products</a></p>
                         </div>
                     </div>
                 </div>
             </div> <!-- end container -->
         </section>
         <!-- end service-section -->
+
 
 
         <!-- start why-choose-section -->
@@ -527,78 +259,174 @@ Built on decades of experience, driven by innovation.</p>
             </div> <!-- end container -->
         </section>
         <!-- end why-choose-section -->
+       
 
 
-        <!-- start testimonials-section -->
-        <section class="testimonials-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col col-lg-6 col-lg-offset-3">
-                        <div class="section-title-s4">
-                            <span>Testimonials</span>
-                            <h2>What People say’s About us</h2>
-                        </div>
-                    </div>
+
+<!-- Start Reviews Section -->
+
+<style>
+  .gradient-custom {
+    background: linear-gradient(to right, #2e7d32, #a5d6a7); /* Dark green to light green */
+    padding: 60px 0;
+  }
+
+  .carousel-indicators li {
+    background-color: #28a745;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+  }
+
+  .carousel-indicators .active {
+    background-color: #1b5e20;
+  }
+
+  .carousel-control.left,
+  .carousel-control.right {
+    background-image: none;
+    color: #1b5e20;
+    font-size: 30px;
+    top: 40%;
+  }
+
+  .profile-icon {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e0e0e0;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .quote-icon {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  .review-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 20px;
+    color: #333;
+  }
+
+  .carousel-caption {
+    position: static;
+    padding: 0;
+  }
+
+  .review-text {
+    font-size: 15px;
+  }
+
+  .testimonial-heading {
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .testimonial-footer {
+    margin-top: 30px;
+    text-align: center;
+    color: white;
+    font-size: 22px;
+  }
+
+  .testimonial-footer a {
+    color: #e8f5e9;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  .testimonial-footer a:hover {
+    color: #c8e6c9;
+  }
+</style>
+<section class="gradient-custom">
+  <div class="container">
+    <h2 class="testimonial-heading">What Our Clients Say About Us?</h2>
+
+    <div class="text-center mb-4">
+      <i class="fas fa-quote-left quote-icon"></i>
+    </div>
+
+    <% if (reviews.length > 0) { %>
+      <div id="reviewCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <% for (let i = 0; i < reviews.length; i++) { %>
+            <li data-target="#reviewCarousel" data-slide-to="<%= i %>" class="<%= i === 0 ? 'active' : '' %>"></li>
+          <% } %>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <% for (let i = 0; i < reviews.length; i++) {
+               const review = reviews[i]; %>
+            <div class="item <%= i === 0 ? 'active' : '' %>">
+              <div class="row review-card text-center text-md-left">
+                <div class="col-sm-4 text-center">
+                  <div class="profile-icon">
+                    <% if (!review.clientPhoto || !review.clientPhoto.url) { %>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#7f7f7f" width="100" height="100">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 
+                                 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 
+                                 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                      </svg>
+                    <% } else { %>
+                      <img src="<%= review.clientPhoto.url %>" alt="Client Photo"
+                           style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    <% } %>
+                  </div>
                 </div>
-                <div class="row">
-                    <div class="col col-md-4">
-                        <div class="testimonial-left-img-holder">
-                            <img src="assets/images/testimonials/man.png" alt>
-                        </div>
-                    </div>
-                    <div class="col col-md-8">
-                        <div class="testimonial-grids testimonial-slider clearfix">
-                            <div class="grid">
-                                <div class="quote">
-                                    <i class="fi flaticon-quote"></i>
-                                    <p>“Recently cut out of an illustrated magazine and housed in a nice, gilded frame. It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look ”</p>
-                                </div>
-                                <div class="client-info">
-                                    <div class="img-holder">
-                                        <img src="assets/images/testimonials/img-1.jpg" alt>
-                                    </div>
-                                    <div class="details">
-                                        <h5>Michel jhon</h5>
-                                        <p>Manager of Automation</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="quote">
-                                    <i class="fi flaticon-quote"></i>
-                                    <p>“Recently cut out of an illustrated magazine and housed in a nice, gilded frame. It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look ”</p>
-                                </div>
-                                <div class="client-info">
-                                    <div class="img-holder">
-                                        <img src="assets/images/testimonials/img-2.jpg" alt>
-                                    </div>
-                                    <div class="details">
-                                        <h5>Alaska</h5>
-                                        <p>Business Officer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="quote">
-                                    <i class="fi flaticon-quote"></i>
-                                    <p>“Recently cut out of an illustrated magazine and housed in a nice, gilded frame. It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look ”</p>
-                                </div>
-                                <div class="client-info">
-                                    <div class="img-holder">
-                                        <img src="assets/images/testimonials/img-3.jpg" alt>
-                                    </div>
-                                    <div class="details">
-                                        <h5>Shain on</h5>
-                                        <p>Manager of Automation</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-sm-8">
+                  <div class="carousel-caption">
+                    <h4><%= review.clientName %></h4>
+                    <p class="review-text"><%= review.clientReview %></p>
+                  </div>
                 </div>
-            </div> <!-- end container -->
-        </section>
-        <!-- end testimonials-section -->
+              </div>
+            </div>
+          <% } %>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#reviewCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        </a>
+        <a class="right carousel-control" href="#reviewCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        </a>
+      </div>
+    <% } else { %>
+      <!-- Fallback message when there are no reviews -->
+      <div class="alert alert-warning text-center mt-4" role="alert">
+        No client reviews available at the moment. Please check back later.
+      </div>
+    <% } %>
+
+    <div class="text-center mt-4">
+      <i class="fas fa-quote-right quote-icon"></i>
+    </div>
+
+    <div class="testimonial-footer">
+      Please check out all our <a href="/reviews">Testimonials</a>
+    </div>
+  </div>
+</section>
+
+
+
+<!--end reviews section-->
 
 
         <!-- start featured-project-section -->
@@ -652,36 +480,7 @@ Built on decades of experience, driven by innovation.</p>
             </div>
         </section>
         <!-- end featured-project-section -->
-
-
-        <!-- start partners-section -->
-        <section class="partners-section">
-            <h2 class="hidden">Partners</h2>
-            <div class="container">
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <div class="partner-grids partners-slider">
-                            <div class="grid">
-                                <img src="assets/images/partners/img-1.jpg" alt>
-                            </div>
-                            <div class="grid">
-                                <img src="assets/images/partners/img-2.jpg" alt>
-                            </div>
-                            <div class="grid">
-                                <img src="assets/images/partners/img-3.jpg" alt>
-                            </div>
-                            <div class="grid">
-                                <img src="assets/images/partners/img-4.jpg" alt>
-                            </div>
-                            <div class="grid">
-                                <img src="assets/images/partners/img-5.jpg" alt>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- end container -->
-        </section>
-        <!-- end partners-section -->
+<br><br><br>
 
 
         <!-- start fun-fact-section -->
@@ -726,104 +525,148 @@ Built on decades of experience, driven by innovation.</p>
         <!-- end fun-fact-section -->
 
 
-        <!-- start team-section -->
-        <section class="team-section section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
-                        <div class="section-title-s5">
-                            <span>Our Team</span>
-                            <h2>Dedicated Team</h2>
-                            <p>Hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <div class="team-grids">
-                            <div class="grid">
-                                <div class="img-social">
-                                    <div class="img-holder">
-                                        <img src="assets/images/team/img-1.jpg" alt>
-                                    </div>
-                                    <div class="social">
-                                        <ul>
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="ti-pinterest"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <h3>Michel Jhon</h3>
-                                    <span>Mechanical Engineering</span>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="img-social">
-                                    <div class="img-holder">
-                                        <img src="assets/images/team/img-2.jpg" alt>
-                                    </div>
-                                    <div class="social">
-                                        <ul>
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="ti-pinterest"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <h3>Wilium Mice</h3>
-                                    <span>Site Manager</span>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="img-social">
-                                    <div class="img-holder">
-                                        <img src="assets/images/team/img-3.jpg" alt>
-                                    </div>
-                                    <div class="social">
-                                        <ul>
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="ti-pinterest"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <h3>Jonthon teat</h3>
-                                    <span>Testing Manager</span>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="img-social">
-                                    <div class="img-holder">
-                                        <img src="assets/images/team/img-4.jpg" alt>
-                                    </div>
-                                    <div class="social">
-                                        <ul>
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="ti-pinterest"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <h3>Shown kel</h3>
-                                    <span>Cheif Officer</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- end container -->
-        </section>
-        <!-- end team-section -->
+<!--Team Section Begin-->
 
+
+
+<style>
+  /* Container with wider width */
+  #teamCarouselContainer {
+    max-width: 950px;  /* wider container */
+    margin: 60px auto 40px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1f5a24;
+  }
+
+  #teamCarouselContainer h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    letter-spacing: 1.3px;
+    border-bottom: 3px solid #1f5a24;
+    display: inline-block;
+    padding-bottom: 10px;
+  }
+
+  #teamCarousel {
+    max-width: 100%;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(31, 90, 36, 0.3);
+    background: #f7fff7;
+    border: 4px solid #1f5a24;
+  }
+
+  #teamCarousel .carousel-inner > .item > img {
+    width: 100%;
+    max-height: 500px;  /* taller for bigger image */
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+  }
+
+  #teamCarousel .carousel-caption {
+    background: rgba(31, 90, 36, 0.75);
+    border-radius: 0 0 12px 12px;
+    padding: 18px 24px;
+    bottom: 0;
+  }
+
+  #teamCarousel .carousel-caption h5 {
+    color: #d4f1c5;
+    font-weight: 700;
+    font-size: 1.7rem;
+    margin: 0 0 8px 0;
+    letter-spacing: 1.1px;
+  }
+
+  #teamCarousel .carousel-caption p {
+    color: #cbe4b4;
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  /* Indicators */
+  #teamCarousel .carousel-indicators li {
+    border-color: #1f5a24;
+  }
+
+  #teamCarousel .carousel-indicators .active {
+    background-color: #1f5a24;
+  }
+
+  /* Controls */
+  #teamCarousel .left.carousel-control,
+  #teamCarousel .right.carousel-control {
+    background-image: none;
+    color: #1f5a24;
+    font-size: 40px;
+    width: 60px;
+    opacity: 0.85;
+  }
+
+  #teamCarousel .left.carousel-control:hover,
+  #teamCarousel .right.carousel-control:hover {
+    color: #4caf50;
+    opacity: 1;
+  }
+</style>
+
+<div id="teamCarouselContainer">
+  <h2>Our Team</h2>
+
+  <div id="teamCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
+
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#teamCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#teamCarousel" data-slide-to="1"></li>
+      <li data-target="#teamCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+
+      <div class="item active">
+        <img src="/assets/images/team-group1.jpg" alt="Department 1 Team">
+        <div class="carousel-caption">
+          <h5>Department 1</h5>
+          <p>Our core development team focusing on innovation and quality.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="/assets/images/team-group2.jpg" alt="Department 2 Team">
+        <div class="carousel-caption">
+          <h5>Department 2</h5>
+          <p>Dedicated to marketing and client engagement with passion.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="/assets/images/team-group3.jpg" alt="Department 3 Team">
+        <div class="carousel-caption">
+          <h5>Department 3</h5>
+          <p>Experts in customer support and satisfaction.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#teamCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#teamCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+
+  </div>
+</div>
+
+<!--Team Section End-->
 
         <!-- start quote-section -->
         <section class="quote-section">

@@ -69,3 +69,32 @@ contact:Joi.object({
 });
 
 
+module.exports.faqSchema = Joi.object({
+  question: Joi.string().required().messages({
+    "string.empty": "Question cannot be empty",
+    "any.required": "Question is required"
+  }),
+  answer: Joi.string().required().messages({
+    "string.empty": "Answer cannot be empty",
+    "any.required": "Answer is required"
+  })
+});
+
+module.exports.reviewSchema = Joi.object({
+  clientName: Joi.string()
+    .required()
+    .messages({
+      'any.required': 'Client name is required.',
+      'string.empty': 'Client name cannot be empty.'
+    }),
+
+  clientReview: Joi.string()
+    .required()
+    .messages({
+      'any.required': 'Client review is required.',
+      'string.empty': 'Client review cannot be empty.'
+    }),
+
+removePhoto: Joi.string().optional() //Already defined a check inside controller for hidden input
+
+});

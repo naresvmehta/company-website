@@ -9,12 +9,14 @@ const mongoose = require("mongoose");
 
 const ExpressError = require("./utils/ExpressError.js");
 
-const {productSchema, loginSchema, enquirySchema} = require("./schema.js");
+const {productSchema, loginSchema, enquirySchema, faqSchema, reviewSchema} = require("./schema.js");
 
 const productController = require("./controllers/product.js");
 const adminController = require("./controllers/admin.js");
 const enquiryController = require("./controllers/enquiry.js");
 const staticController = require("./controllers/static");
+const faqController = require("./controllers/faq.js");
+const reviewController = require("./controllers/review.js");
 
 const path = require('path');
 
@@ -72,7 +74,7 @@ app.use(session(sessionOptions));
 app.use(flash());
 
 
-const {upload}=require("./cloudinaryConfig.js");
+const {upload, uploadReview}=require("./cloudinaryConfig.js");
 const multer = require("multer");
 const uploadBuffer = multer(); // For CKEditor (in-memory buffer)
 
@@ -105,7 +107,6 @@ app.get("/", staticController.redirectToHome);
 app.get("/home", staticController.renderHome);
 app.get("/about", staticController.renderAbout);
 app.get("/contact", staticController.renderContact);
-
 
 //Validate Login Page
 
@@ -170,6 +171,78 @@ app.get("/products/:id", productController.showProduct);
 
 
 
+//FAQ Form
+
+const validateFaq = (req,res,next) =>{
+  const {error} = faqSchema.validate(req.body);
+  if(error){
+   req.flash("error", error.details[0].message);
+ 
+     if (req.method === "POST") {
+      return res.redirect("/faq/add");
+    } else if (req.method === "PUT" && id) {
+      return res.redirect(`/faq/${id}/edit`);
+    }
+    return res.redirect("/faq");
+  }
+  next();
+}
+
+// 1. List All FAQs
+app.get("/faq", faqController.renderFaq);
+
+// 2. Show Add FAQ Form (static route first!)
+app.get("/faq/add", isAdmin, faqController.renderAddFaqForm);
+
+// 3. Handle Add FAQ Form
+app.post("/faq", isAdmin, validateFaq, faqController.AddFaq);
+
+// 4. Render Edit FAQ Form
+app.get("/faq/:id/edit", isAdmin, faqController.renderEditFaqForm);
+
+// 5. Edit FAQ
+app.put("/faq/:id", isAdmin, validateFaq, faqController.editFAQ);
+
+// 6. Delete FAQ
+app.delete("/faq/:id", isAdmin, faqController.deleteFAQ);
+
+
+
+
+
+//Reviews Section
+
+const validateReview = (req, res, next) => {
+  const { error } = reviewSchema.validate(req.body);
+  if (error) {
+    req.flash('error', error.details.map(el => el.message).join(', '));
+    return res.redirect('/reviews');
+  }
+  next();
+};
+
+// 1. Display All Reviews (Public)
+app.get("/reviews", reviewController.renderReviews);
+
+// 2. Display Add Review Form (Admin Only)
+app.get("/reviews/add", isAdmin, reviewController.renderAddReviewForm);
+
+// 3. Add Review (Admin Only)
+app.post("/reviews", isAdmin, uploadReview.single('clientPhoto'), validateReview, reviewController.addReview);
+
+// 4. Display Edit Review Form (Admin Only)
+app.get("/reviews/:id/edit", isAdmin, reviewController.renderEditReviewForm);
+
+// 5. Edit Review (Admin Only)
+app.put("/reviews/:id", isAdmin, uploadReview.single('clientPhoto'), validateReview, reviewController.editReview);
+
+// 6. Delete Review (Admin Only)
+app.delete("/reviews/:id", isAdmin, reviewController.deleteReview);
+
+
+
+
+
 
 
 //Validate Enquiry Form
@@ -229,6 +302,16 @@ async function main() {
 main()
   .then(() => {
     console.log("Connected to DB");
+
+    // Pinging every 9 minutes after successful DB connection
+    setInterval(async () => {
+      try {
+        await mongoose.connection.db.admin().ping();
+        console.log("MongoDB pinged to prevent sleep.");
+      } catch (err) {
+        console.error("MongoDB ping failed:", err.message);
+      }
+    }, 9 * 60 * 1000); // 9 minutes
   })
   .catch(err => {
     console.log(err);

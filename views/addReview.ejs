@@ -1,0 +1,124 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<div class="container" style="padding-top: 50px; padding-bottom: 80px;">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default" style="border-color: #2e7d32;">
+        <div class="panel-heading" style="background-color: #2e7d32; color: white;">
+          <h3 class="panel-title">Add Client Testimonial</h3>
+        </div>
+        
+        <div class="panel-body">
+          <form action="/reviews" method="POST" enctype="multipart/form-data">
+            
+            <!-- Client's Photo -->
+            <div class="form-group">
+              <label>Client's Photo <small class="text-muted">(Optional - Will be cropped to circle)</small></label>
+              <div class="image-upload-container text-center">
+                <label for="clientPhoto" class="upload-label">
+                  <div class="preview-frame">
+                    <img id="imagePreview" src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%237f7f7f'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E" 
+                         alt="Preview" class="preview-image">
+                    <div class="upload-hover">
+                      <i class="glyphicon glyphicon-camera"></i>
+                      <div>Click to upload</div>
+                    </div>
+                  </div>
+                </label>
+                <input type="file" name="clientPhoto" id="clientPhoto" accept="image/*" class="d-none">
+              </div>
+              <div class="text-center mt-2">
+                <small class="text-muted">For best results, use square images (min. 400×400px)</small>
+              </div>
+            </div>
+
+            <!-- Other form fields... -->
+            <div class="form-group">
+              <label for="clientName">Client's Name <span class="text-danger">*</span></label>
+              <input type="text" name="clientName" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label for="clientReview">Client's Review <span class="text-danger">*</span></label>
+              <textarea name="clientReview" class="form-control" rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-block">Submit Review</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .preview-frame {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #f8f9fa;
+    border: 2px dashed #ccc;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .upload-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(46, 125, 50, 0.7);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .preview-frame:hover .upload-hover {
+    opacity: 1;
+  }
+
+  .upload-label {
+    cursor: pointer;
+    display: block;
+  }
+
+  .image-upload-container {
+    margin-bottom: 15px;
+  }
+</style>
+
+<script>
+  document.getElementById('clientPhoto').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    const preview = document.getElementById('imagePreview');
+    
+    if (file) {
+      const reader = new FileReader();
+      
+      reader.onload = function(e) {
+        preview.src = e.target.result;
+        preview.style.objectFit = 'cover';
+      }
+      
+      reader.readAsDataURL(file);
+    } else {
+      // Reset to default icon if no file selected
+      preview.src = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%237f7f7f'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
+    }
+  });
+</script>
