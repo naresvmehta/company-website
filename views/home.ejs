@@ -697,6 +697,7 @@ Built on decades of experience, driven by innovation.</p>
                         <p>Submit your enquiry and we'll get back to you soon</p>
 
                         <form method="POST" action="/submit" class="contact-validation-active" id="contact-quote-form">
+                          <input type="hidden" name="fromPage" id="fromPageInput" />
                             <div>
                                 <input type="text" class="form-control" name="contact[name]" id="name" placeholder="Name*" required>
                             </div>
@@ -771,6 +772,14 @@ Built on decades of experience, driven by innovation.</p>
 phoneInput.addEventListener('input', () => {
   phoneInput.value = phoneInput.value.replace(/[^0-9+()\- ]/g, '');
 });
+
+//For better UX Experience
+ document.addEventListener("DOMContentLoaded", function () {
+    const fromPageInput = document.getElementById("fromPageInput");
+    if (fromPageInput) {
+      fromPageInput.value = window.location.pathname;
+    }
+  });
 
 </script>
 

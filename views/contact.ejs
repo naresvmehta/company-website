@@ -14,6 +14,8 @@
                 <div class="row">
                     <div class="col col-md-7">
                        <form method="POST" action="/submit" class="contact-validation-active" id="contact-form-main">
+                        <input type="hidden" name="fromPage" id="fromPageInput" />
+
   <div>
     <label for="name" class="form-label">Name</label>
     <input type="text" class="form-control" name="contact[name]" id="name" placeholder="Name*" required>
@@ -78,5 +80,13 @@
 phoneInput.addEventListener('input', () => {
   phoneInput.value = phoneInput.value.replace(/[^0-9+()\- ]/g, '');
 });
+
+//For better UX Experience
+ document.addEventListener("DOMContentLoaded", function () {
+    const fromPageInput = document.getElementById("fromPageInput");
+    if (fromPageInput) {
+      fromPageInput.value = window.location.pathname;
+    }
+  });
 
 </script>

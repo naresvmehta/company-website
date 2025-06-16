@@ -11,7 +11,7 @@ const auth = new google.auth.JWT(
 const sheets = google.sheets({ version: 'v4', auth });
 
 module.exports.submitEnquiry = async (req, res) => {
-  const backURL = req.get('Referer') || '/home';
+  const backURL = req.body.fromPage || req.get("Referer") || '/home';
 
   try {
     const contact = req.body.contact || {};
