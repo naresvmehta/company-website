@@ -66,7 +66,9 @@ const sessionOptions = {
   saveUninitialized: false,  // Only save session if something is stored
   cookie: {
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    httpOnly: true
+    httpOnly: true,
+    sameSite: 'lax',
+    secure: process.env.ENVIRONMENT === "production"    //Cookies are only available in HTTPS (only in production)
   }
 }
 
@@ -78,6 +80,13 @@ const {upload, uploadReview}=require("./cloudinaryConfig.js");
 const multer = require("multer");
 const uploadBuffer = multer(); // For CKEditor (in-memory buffer)
 
+const helmet = require('helmet');
+
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
 
 
 //Global Middleware
@@ -119,9 +128,23 @@ const validateLogin = (req,res,next) =>{
   next();
 }
 
+// Rate limiter for login attempts
+const loginLimiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 minutes
+  max: 10, // limit each IP to 10 login attempts per 10 mins
+  handler: (req, res, next) => {
+    const backUrl = req.get("Referer") || "/login";
+    req.flash('error', "Too many login attempts. Please try again after 10 minutes");
+    req.session.save(() => res.redirect(backUrl));
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+
 app.get("/login", adminController.renderLoginPage);
 
-app.post("/login", validateLogin, adminController.login);
+app.post("/login", loginLimiter, validateLogin, adminController.login);
 
 app.post("/logout", isAdmin, adminController.logout);
 
