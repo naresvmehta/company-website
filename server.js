@@ -133,9 +133,8 @@ const loginLimiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 minutes
   max: 10, // limit each IP to 10 login attempts per 10 mins
   handler: (req, res, next) => {
-    const backUrl = req.get("Referer") || "/login";
     req.flash('error', "Too many login attempts. Please try again after 10 minutes");
-    req.session.save(() => res.redirect(backUrl));
+    req.session.save(() => res.redirect("/login"));
   },
   standardHeaders: true,
   legacyHeaders: false,
@@ -290,7 +289,7 @@ const contactFormLimiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 minutes
   max: 10, // limit each IP to 10 requests per windowMs (So max 10 requests in 10 mins)
  handler: (req, res, next) => {
-  const backUrl = req.get("Referer") || "/contact";
+ const backUrl = req.body.fromPage || req.get("Referer") || '/home';
   req.flash('error', "Too many enquiries sent from this IP. Please try again after 10 minutes");
   req.session.save(() => res.redirect(backUrl)); //Ensures flash messages are saved in sessions before redirecting
 },

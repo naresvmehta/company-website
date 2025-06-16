@@ -65,7 +65,9 @@ contact:Joi.object({
       "string.empty": "Description is required",
       "any.required": "Description is required"
     })
-    }).required()
+    }).required(),
+  // Adding this to allow fromPage as a string
+  fromPage: Joi.string().optional()
 });
 
 
