@@ -188,7 +188,7 @@ Built on decades of experience, driven by innovation.</p>
   %>
     <a href="/products/<%= product._id %>" class="product-link">
       <div class="product-card">
-        <img src="<%= product.coverImage.url %>" alt="<%= product.title %>">
+        <img loading="lazy" src="<%= product.coverImage.url %>" alt="<%= product.title %>">
         <h4><%= product.title %></h4>
       </div>
     </a>
@@ -383,7 +383,7 @@ Built on decades of experience, driven by innovation.</p>
                                  1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                       </svg>
                     <% } else { %>
-                      <img src="<%= review.clientPhoto.url %>" alt="Client Photo"
+                      <img loading="lazy" src="<%= review.clientPhoto.url %>" alt="Client Photo"
                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                     <% } %>
                   </div>
@@ -628,7 +628,7 @@ Built on decades of experience, driven by innovation.</p>
     <div class="carousel-inner" role="listbox">
 
       <div class="item active">
-        <img src="/assets/images/team-group1.jpg" alt="Department 1 Team">
+        <img loading="lazy" src="/assets/images/team-group1.jpg" alt="Department 1 Team">
         <div class="carousel-caption">
           <h5>Department 1</h5>
           <p>Our core development team focusing on innovation and quality.</p>
@@ -636,7 +636,7 @@ Built on decades of experience, driven by innovation.</p>
       </div>
 
       <div class="item">
-        <img src="/assets/images/team-group2.jpg" alt="Department 2 Team">
+        <img loading="lazy" src="/assets/images/team-group2.jpg" alt="Department 2 Team">
         <div class="carousel-caption">
           <h5>Department 2</h5>
           <p>Dedicated to marketing and client engagement with passion.</p>
@@ -644,7 +644,7 @@ Built on decades of experience, driven by innovation.</p>
       </div>
 
       <div class="item">
-        <img src="/assets/images/team-group3.jpg" alt="Department 3 Team">
+        <img loading="lazy" src="/assets/images/team-group3.jpg" alt="Department 3 Team">
         <div class="carousel-caption">
           <h5>Department 3</h5>
           <p>Experts in customer support and satisfaction.</p>

@@ -43,6 +43,13 @@ module.exports.createProduct = async (req, res) => {
     };
 
     const product = new Product({ title, description, coverImage });
+
+  //Lazy Load Description Images to save Cloudinary Bandwidth
+  product.description = product.description?.replace(
+  /<img(?![^>]*loading=)[^>]*?>/gi,
+  (imgTag) => imgTag.replace('<img', '<img loading="lazy"')
+);
+
     await product.save();
 
     req.flash("success", "New product added successfully!");
@@ -141,6 +148,11 @@ module.exports.updateProduct = async (req, res) => {
       await cloudinary.uploader.destroy(publicId);
     }
 
+  //Lazy Load Description Images to save Cloudinary Bandwidth
+  product.description = product.description?.replace(
+  /<img(?![^>]*loading=)[^>]*?>/gi,
+  (imgTag) => imgTag.replace('<img', '<img loading="lazy"')
+);
     await product.save();
     req.flash("success", "Product details updated successfully");
     res.redirect(`/products/${id}`);
