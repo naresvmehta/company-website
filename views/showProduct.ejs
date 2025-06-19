@@ -1,4 +1,6 @@
 <%- layout("layouts/boilerplate") %>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> <!--Google font family:Roboto-->
+
 
 <div class="container" style="margin-top: 50px; margin-bottom: 60px;">
 
@@ -28,22 +30,113 @@
     </div>
   </div>
 
-  <!-- Description Section -->
-  <div class="row" style="margin-top: 40px;">
- <div class="col-md-12">
+<!-- Show Table of Content + Product Description -->
+<div class="row" style="margin-top: 40px;">
+  <div class="col-md-12">
 
-      <div class="panel panel-success" style="border-radius: 8px;">
-        <div class="panel-heading" style="background-color: #4CAF50; color: white; border-radius: 8px 8px 0 0;">
-          <h3 class="panel-title">Description</h3>
-        </div>
-        <div class="panel-body" style="font-size: 16px; line-height: 1.7;">
-          <%- product.description %> <!-- Allow CKEditor HTML content -->
-        </div>
+    <!-- Table of Contents Wrapper -->
+    <div id="toc-container-wrapper" style="margin-bottom: 20px;">
+      <button id="toc-toggle" class="btn btn-success" style="margin-bottom: 10px;">
+        <i class="glyphicon glyphicon-remove"></i> Hide Table of Contents
+      </button>
+      <div id="toc-container" style="display: block;"></div>  
+    </div>
+
+    <div class="panel panel-success" style="border-radius: 8px;">
+      <div class="panel-heading" style="background-color: #4CAF50; color: white; border-radius: 8px 8px 0 0;">
+        <h3 class="panel-title">Description</h3>
+      </div>
+
+      <div class="panel-body product-description" style="font-size: 16px; line-height: 1.7;">
+        <%- product.description %> <!-- CKEditor HTML content -->
       </div>
     </div>
+
   </div>
+</div>
+
 
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const wrapper = document.getElementById('toc-container');
+    const toggleBtn = document.getElementById('toc-toggle');
+    const headings = document.querySelectorAll('.product-description h2');
+
+    if (headings.length < 2) {
+      toggleBtn.style.display = 'none'; // Hide button if ToC not needed
+      return;
+    }
+
+    // Create the container box
+    const box = document.createElement('div');
+    box.style.border = '1px solid #4CAF50';
+    box.style.background = '#f9fff9';
+    box.style.padding = '20px';
+    box.style.borderRadius = '10px';
+    box.style.boxShadow = '0 2px 8px rgba(0,0,0,0.05)';
+    box.style.fontFamily = `'Roboto', sans-serif`;
+
+    // Title
+    const title = document.createElement('h4');
+    title.innerHTML = '<i class="fa fa-list-ul" style="margin-right: 6px;"></i> Table of Contents <small style="color: #555; font-weight: normal;">(click to navigate)</small>';
+    title.style.color = '#2e7d32';
+    title.style.marginBottom = '12px';
+    title.style.borderBottom = '1px solid #c8e6c9';
+    title.style.paddingBottom = '6px';
+
+    // List
+    const list = document.createElement('ul');
+    list.style.listStyle = 'none';
+    list.style.paddingLeft = '0';
+
+    headings.forEach(h2 => {
+       const text = h2.textContent.trim();
+       if (!text) return; // Skip empty or whitespace-only headings
+      const id = h2.id || h2.textContent.trim().toLowerCase().replace(/\s+/g, '-');
+      h2.id = id;
+
+      const item = document.createElement('li');
+      item.style.marginBottom = '8px';
+
+      const link = document.createElement('a');
+      link.href = `#${id}`;
+      link.textContent = h2.textContent;
+      link.style.color = '#1b5e20';
+      link.style.textDecoration = 'none';
+      link.style.display = 'inline-block';
+      link.style.padding = '6px 10px';
+      link.style.borderRadius = '6px';
+      link.style.transition = 'background-color 0.2s ease';
+
+      link.addEventListener('mouseover', () => {
+        link.style.backgroundColor = '#e8f5e9';
+      });
+      link.addEventListener('mouseout', () => {
+        link.style.backgroundColor = 'transparent';
+      });
+
+      item.appendChild(link);
+      list.appendChild(item);
+    });
+
+    box.appendChild(title);
+    box.appendChild(list);
+    wrapper.appendChild(box);
+
+    // Toggle logic
+    toggleBtn.addEventListener('click', () => {
+      const visible = wrapper.style.display === 'block';
+      wrapper.style.display = visible ? 'none' : 'block';
+      toggleBtn.innerHTML = visible
+        ? '<i class="glyphicon glyphicon-list-alt"></i> Show Table of Contents'
+        : '<i class="glyphicon glyphicon-remove"></i> Hide Table of Contents';
+    });
+  });
+</script>
+
+
 
 <style>
   figure.image figcaption {
@@ -52,4 +145,9 @@
   font-size: 16px;
   margin-top: 6px;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 </style>
