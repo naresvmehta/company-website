@@ -1,5 +1,8 @@
 <% layout("layouts/boilerplate.ejs") %>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
 <div class="container" style="padding-top: 50px; padding-bottom: 80px;">
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
@@ -9,6 +12,13 @@
         </div>
         
         <div class="panel-body">
+
+            <!-- Info note for homepage carousel -->
+          <p class="note-text text-center" style="font-family: 'Roboto', sans-serif; color: #555; font-size: 14px; margin-bottom: 15px;">
+          <i class="fas fa-info-circle" style="color: #007bff; margin-right: 6px;"></i>
+           Only the <strong>latest 15 reviews</strong> will be shown in the homepage carousel to keep it fast. All reviews will be visible on the <strong>Reviews</strong> page
+          </p>
+
           <form action="/reviews" method="POST" enctype="multipart/form-data">
             
             <!-- Client's Photo -->

@@ -35,7 +35,7 @@
     .marquee {
       display: flex;
       width: max-content;
-      animation: scroll 40s linear infinite;
+   /*   animation: scroll 40s linear infinite; */
     }
     .product-card {
       flex: 0 0 300px;
@@ -89,9 +89,9 @@
         flex: 0 0 90vw;
         min-height: 420px;
       }
-      .marquee {
+   /*   .marquee {
         animation-duration: 40s;
-      }
+      } */
     }
   </style>
 
@@ -180,7 +180,9 @@ Built on decades of experience, driven by innovation.</p>
 
 
 <div class="marquee-wrapper">
-  <div class="marquee">
+ <div class="marquee" style="animation: scroll <%= animationDuration %>s linear infinite">
+
+
 
    <% if (products && products.length > 0) { %>
   <% for (let i = 0; i < 2 * products.length; i++) { 

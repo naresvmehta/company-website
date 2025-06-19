@@ -9,9 +9,12 @@ module.exports.redirectToHome = (req, res) => {
 
 module.exports.renderHome = async (req, res) => {
   try {
-    const reviews = await Review.find({});
+    const reviews = await Review.find({}).sort({ createdAt: -1 }).limit(15); //Newly created 15 reviews only to prevent load on home page 
     const products = await Product.find({});
-    res.render("home.ejs", { title: false, reviews, products });
+    const speedPerItem = 4;
+    let duration = products.length * speedPerItem;
+    const animationDuration = Math.min(Math.max(duration, 20), 120); // fallback logic (20s - 120s) --> Suitable speed for upto 30 - 35 images
+    res.render("home.ejs", { title: false, reviews, products, animationDuration });
   } catch (err) {
     console.error("Error in Home Page: ", err);
     res.render("home.ejs", {
