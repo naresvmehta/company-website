@@ -59,7 +59,8 @@ On the server:
 cd ~/company-website
 git pull origin main
 npm ci (If any new npm package has been installed & locked)
-pm2 restart company-website
+nano .env (To change .env values if needed)
+pm2 restart company-website / pm2 restart company-website --update-env 
 ```
 
 > ✅ `npm ci` avoids pulling unwanted new versions of dependencies. It uses the **exact versions** stored in `package-lock.json`.
@@ -123,6 +124,8 @@ npm install
 Now your lock file is updated with safe versions.
 
 ---
+
+
 
 ## 📄 License
 
