@@ -69,6 +69,7 @@ const sessionOptions = {
     httpOnly: true,
     sameSite: 'lax',
     secure: process.env.ENVIRONMENT === "production"    //Cookies are only available in HTTPS (only in production)
+    //.env values are parsed as strings by default — even numbers or booleans become strings
   }
 }
 

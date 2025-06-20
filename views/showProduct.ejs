@@ -1,5 +1,7 @@
 <%- layout("layouts/boilerplate") %>
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> <!--Google font family:Roboto-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!--Font Awesome-->
+
 
 
 <div class="container" style="margin-top: 50px; margin-bottom: 60px;">
@@ -86,6 +88,16 @@
     title.style.borderBottom = '1px solid #c8e6c9';
     title.style.paddingBottom = '6px';
 
+    // Notice (We are lazy loading the description images to save Cloudinary Free Tier Bandwidth)
+    const notice = document.createElement('div');
+    notice.innerHTML = `<i class="fa fa-triangle-exclamation" style="margin-right: 6px; color: #f9a825;"></i>
+    If the section doesn’t scroll precisely, please scroll manually. This may occur due to image loading behavior`;
+    notice.style.fontSize = '14px';
+    notice.style.color = '#444';
+    notice.style.marginTop = '10px';
+    notice.style.marginBottom = '14px';
+    notice.style.fontFamily = `'Roboto', sans-serif'`;
+
     // List
     const list = document.createElement('ul');
     list.style.listStyle = 'none';
@@ -122,7 +134,9 @@
     });
 
     box.appendChild(title);
+    box.appendChild(notice);
     box.appendChild(list);
+
     wrapper.appendChild(box);
 
     // Toggle logic
