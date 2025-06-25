@@ -1,5 +1,7 @@
 <% layout('layouts/boilerplate') %>
 
+<!-- Google Font for buttons -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 
 <style>
   .youtube {
@@ -108,17 +110,23 @@
                             <h2>We set the standards others try to live up to.</h2>
                         </div>
                         <div class="details">
-                           <p id="short-about">
-  In India, Patil Machines Pvt Ltd was the first to develop a Plodder for Toilet Soap...
+   <p id="short-about">
+  Patil Machines Pvt. Ltd. is a leading manufacturer and exporter of soap and detergent plant machinery in India. Established in 1965, we specialize in turnkey solutions for toilet soap plants, laundry soap production and detergent manufacturing equipment.
   <a href="#" id="read-more-about" style="color: blue; font-size: 0.9rem;">Read More</a>
 </p>
 
 <p id="full-about" style="display: none;">
-  In India, Patil Machines Pvt Ltd was the first to develop a Plodder for Toilet Soap as well as Laundry soap Plant in the Year 1965. Since then the convoy of Machinery and Solutions to numerous clients within the Nation as well as abroad has kept us on the leading position in the industry.<br><br>
-  We provide cutting edge solutions and state-of- art equipments to various applications like, Toilet Soap and Laundry Soap Plant, Detergent Cake Plant, Detergent Powder Machinery, Fatty Acid Plant, Sulphonation Plant, Oil Refinery Plant, Saponification – Noodle Plant. We specialize in manufacture, installation and commissioning of these projects as well as glycerine distillation plant and allied equipments.<br><br>
-  Our commitment to the continuously improving technology and consistency in quality has become a tradition to cater to the requirement of multinational organisation in this field.<br><br>
-  Our experience encompasses the areas such as basic design, detailed engineering, supply of the plant and equipments on turnkey basis and also erection and commissioning. Precision Machinists designers and engineers have kept themselves abreast with the latest technologies around the world. They research with the leading manufacturers and clients to determine the current and future needs of these industries. Such requirements have been studied with great care, concentrating on the difficulties commonly encountered by the actual users. The result of these activities is what results in new levels of productivity, efficiency and reliability.
+  Patil Machines Pvt. Ltd. is a pioneer in the Indian soap and detergent plant industry. In 1965, we became the first in India to develop a Plodder machine for toilet soap as well as laundry soap manufacturing. Since then, our convoy of high-quality machinery and industrial solutions has served numerous clients across India and abroad, making us a trusted name in soap and detergent plant manufacturing.<br><br>
+
+  We provide cutting-edge solutions and state-of-the-art equipment for a variety of applications including toilet soap plants, laundry soap plants, detergent cake plants, detergent powder machinery, fatty acid plants, sulphonation plants, oil refinery units and saponification–noodle plants. We also specialize in the design, supply and commissioning of glycerine distillation plants and other allied detergent production machinery.<br><br>
+
+  Our commitment to continuously improving technology, consistent product quality and efficient project execution has allowed us to meet the demands of multinational organizations and major industrial clients in the soap and detergent industry.<br><br>
+
+  Our expertise covers basic design, detailed engineering, turnkey plant supply, machinery manufacturing and complete installation and commissioning services. Our engineers and designers stay updated with the latest global technologies by collaborating with manufacturers and clients to understand real-time industry needs. These insights help us create machinery that improves productivity, ensures long-term reliability and addresses the real-world challenges faced in soap and detergent manufacturing plants.
 </p>
+
+
+
 
                             <div class="clearfix">
                                 <ul>
@@ -449,7 +457,7 @@ Built on decades of experience, driven by innovation.</p>
                     <div class="grid">
                         <div class="overlay">
                             <span class="count">01.</span>
-                            <h3>Welding Processing</h3>
+                            <h3>Soap Machinery</h3>
                             <p>Travelling salesman and above it there hung a picture that he had recently cut out</p>
                             <a href="#" class="theme-btn">Read More</a>
                         </div>
@@ -457,7 +465,7 @@ Built on decades of experience, driven by innovation.</p>
                     <div class="grid">
                         <div class="overlay">
                             <span class="count">02.</span>
-                            <h3>Materials project</h3>
+                            <h3>Food Machinery</h3>
                             <p>Travelling salesman and above it there hung a picture that he had recently cut out</p>
                             <a href="#" class="theme-btn">Read More</a>
                         </div>
@@ -465,7 +473,7 @@ Built on decades of experience, driven by innovation.</p>
                     <div class="grid">
                         <div class="overlay">
                             <span class="count">03.</span>
-                            <h3>Oil & Gas project</h3>
+                            <h3>Speciality Chemicals Machinery</h3>
                             <p>Travelling salesman and above it there hung a picture that he had recently cut out</p>
                             <a href="#" class="theme-btn">Read More</a>
                         </div>
@@ -473,7 +481,7 @@ Built on decades of experience, driven by innovation.</p>
                     <div class="grid">
                         <div class="overlay">
                             <span class="count">04.</span>
-                            <h3>Power Energy project</h3>
+                            <h3>Dhoop Machines</h3>
                             <p>Travelling salesman and above it there hung a picture that he had recently cut out</p>
                             <a href="#" class="theme-btn">Read More</a>
                         </div>
@@ -562,14 +570,19 @@ Built on decades of experience, driven by innovation.</p>
 
   #teamCarousel .carousel-inner > .item > img {
     width: 100%;
-    max-height: 500px;  /* taller for bigger image */
+    max-height: 650px;  /* taller for bigger image */
     object-fit: cover;
-    border-radius: 12px 12px 0 0;
+    border-radius: 12px 12px 12px 12px;
   }
+
+/* If team.department or team.description (captions) is present */
+  #teamCarousel .carousel-inner > .item.has-caption > img {
+  border-radius: 12px 12px 0 0; /* Only top corners rounded */
+}
 
   #teamCarousel .carousel-caption {
     background: rgba(31, 90, 36, 0.75);
-    border-radius: 0 0 12px 12px;
+    border-radius: 0 0 13px 13px;
     padding: 18px 24px;
     bottom: 0;
   }
@@ -614,60 +627,107 @@ Built on decades of experience, driven by innovation.</p>
   }
 </style>
 
+<style>
+ .admin-controls-floating {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  z-index: 10;
+  font-family: 'Roboto', sans-serif;
+}
+
+.admin-controls-floating .btn-edit,
+.admin-controls-floating .btn-delete {
+  background-color: #1f5a24;
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 6px;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.admin-controls-floating .btn-edit:hover {
+  background-color: #2e7d32;
+}
+
+.admin-controls-floating .btn-delete {
+  background-color: #c62828;
+}
+
+.admin-controls-floating .btn-delete:hover {
+  background-color: #e53935;
+}
+
+
+</style>
+
 <div id="teamCarouselContainer">
   <h2>Our Team</h2>
 
-  <div id="teamCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
+  <% if (teams.length > 0) { %>
+    <div id="teamCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
 
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#teamCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#teamCarousel" data-slide-to="1"></li>
-      <li data-target="#teamCarousel" data-slide-to="2"></li>
-    </ol>
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <% teams.forEach((team, index) => { %>
+          <li data-target="#teamCarousel" data-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>"></li>
+        <% }) %>
+      </ol>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <% teams.forEach((team, index) => { %>
+          <div class="item <%= index === 0 ? 'active' : '' %> <%= (team.department || team.description) ? 'has-caption' : '' %>">
 
-      <div class="item active">
-        <img loading="lazy" src="/assets/images/team-group1.jpg" alt="Department 1 Team">
-        <div class="carousel-caption">
-          <h5>Department 1</h5>
-          <p>Our core development team focusing on innovation and quality.</p>
-        </div>
+
+
+            <img loading="lazy" src="<%= team.coverImage.url %>" alt="<%= team.department || 'Team Photo' %>">
+            <% if(team.department || team.description) { %>
+            <div class="carousel-caption">
+              <% if (team.department) { %>
+                <h5><%= team.department %></h5>
+              <% } %>
+              <% if (team.description) { %>
+                <p><%= team.description %></p>
+              <% } %>
+            </div>
+            <% } %>
+            <% if(admin){ %>
+    <div class="admin-controls-floating">
+      <a href="/teams/<%= team._id %>/edit" class="btn-edit">Edit</a>
+      <form action="/teams/<%= team._id %>?_method=DELETE" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this Team photo?')">
+        <button type="submit" class="btn-delete">Delete</button>
+      </form>
+    </div>
+  <% } %>
+          </div>
+        <% }) %>
       </div>
 
-      <div class="item">
-        <img loading="lazy" src="/assets/images/team-group2.jpg" alt="Department 2 Team">
-        <div class="carousel-caption">
-          <h5>Department 2</h5>
-          <p>Dedicated to marketing and client engagement with passion.</p>
-        </div>
-      </div>
-
-      <div class="item">
-        <img loading="lazy" src="/assets/images/team-group3.jpg" alt="Department 3 Team">
-        <div class="carousel-caption">
-          <h5>Department 3</h5>
-          <p>Experts in customer support and satisfaction.</p>
-        </div>
-      </div>
+      <!-- Controls -->
+      <a class="left carousel-control" href="#teamCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#teamCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
 
     </div>
-
-    <!-- Controls -->
-    <a class="left carousel-control" href="#teamCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#teamCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-
-  </div>
+  <% } else { %>
+    <!-- Fallback message when there are no team photos -->
+    <div class="alert alert-warning text-center mt-4" role="alert">
+      No team photos available at the moment. Please check back later.
+    </div>
+  <% } %>
 </div>
-
 <!--Team Section End-->
 
         <!-- start quote-section -->
@@ -676,10 +736,10 @@ Built on decades of experience, driven by innovation.</p>
                 <div class="left-col">
                     <h2>Leading Innovators in Soap & Detergent Machinery Since 1965</h2>
                     <div class="details">
-                        <p>Patil Machines Pvt Ltd, established in 1965, was the first in India to develop a Plodder for toilet and laundry soap. With decades of experience, we continue to lead the industry by delivering advanced, reliable machinery for soap and detergent production.</p>
+                        <p>Patil Machines Pvt Ltd, established in 1965, was the first in India to develop a Plodder machine for toilet and laundry soap. With decades of experience, we continue to lead the industry as a trusted soap plant manufacturer and detergent machinery supplier, delivering advanced, reliable machinery for soap and detergent production.</p>
                         <div class="clearfix">
                             <ul>
-                                <li><i class="ti-check"></i> First Indian company to develop Plodder machinery (1965)</li>
+                                <li><i class="ti-check"></i> First Indian company to develop Plodder machine (1965)</li>
                                 <li><i class="ti-check"></i> Expertise in soap, detergent & chemical plant solutions</li>
                             </ul>
                             <ul>

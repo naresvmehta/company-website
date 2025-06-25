@@ -100,3 +100,9 @@ module.exports.reviewSchema = Joi.object({
 removePhoto: Joi.string().optional() //Already defined a check inside controller for hidden input
 
 });
+
+
+module.exports.teamSchema = Joi.object({
+  department: Joi.string().allow('').optional(),
+  description: Joi.string().allow('').optional()
+});

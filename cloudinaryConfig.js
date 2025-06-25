@@ -27,15 +27,28 @@ const reviewStorage = new CloudinaryStorage({
   },
 });
 
+//For Team Photo 
+
+const teamStorage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "PatilMachines/teams",
+    allowed_formats: ["jpg", "png", "jpeg"],
+  },
+});
+
 
 //  Create the multer upload middleware
 const upload = multer({ storage });
 
 const uploadReview = multer({storage: reviewStorage})
 
+const uploadTeam = multer({storage: teamStorage});
+
 //  Export both cloudinary and upload
 module.exports = {
   cloudinary,
   upload,
   uploadReview,
+  uploadTeam,
 };

@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 
 const ExpressError = require("./utils/ExpressError.js");
 
-const {productSchema, loginSchema, enquirySchema, faqSchema, reviewSchema} = require("./schema.js");
+const {productSchema, loginSchema, enquirySchema, faqSchema, reviewSchema, teamSchema} = require("./schema.js");
 
 const productController = require("./controllers/product.js");
 const adminController = require("./controllers/admin.js");
@@ -17,6 +17,7 @@ const enquiryController = require("./controllers/enquiry.js");
 const staticController = require("./controllers/static");
 const faqController = require("./controllers/faq.js");
 const reviewController = require("./controllers/review.js");
+const teamController = require("./controllers/team.js");
 
 const path = require('path');
 
@@ -77,7 +78,7 @@ app.use(session(sessionOptions));
 app.use(flash());
 
 
-const {upload, uploadReview}=require("./cloudinaryConfig.js");
+const {upload, uploadReview, uploadTeam}=require("./cloudinaryConfig.js");
 const multer = require("multer");
 const uploadBuffer = multer(); // For CKEditor (in-memory buffer)
 
@@ -261,6 +262,38 @@ app.put("/reviews/:id", isAdmin, uploadReview.single('clientPhoto'), validateRev
 
 // 6. Delete Review (Admin Only)
 app.delete("/reviews/:id", isAdmin, reviewController.deleteReview);
+
+
+
+
+
+
+const validateTeam = (req,res,next) => {
+  const {error} = teamSchema.validate(req.body);
+  if(error){
+    req.flash("error", "Invalid Input");
+    return res.redirect("/home");
+  }
+  next();
+}
+
+
+// 1. Show Add Team Photo Form (All Admin-only access)
+app.get("/teams/add", isAdmin, teamController.renderAddTeamPhotoForm);
+
+// 2. Handle Add Team Photo (with image upload & validation)
+app.post("/teams", isAdmin, uploadTeam.single("coverImage"), validateTeam, teamController.addTeamPhoto);
+
+// 3. Show Edit Form
+app.get("/teams/:id/edit", isAdmin, teamController.renderEditTeamPhotoForm);
+
+// 4. Handle Edit (with image upload & validation)
+app.put("/teams/:id", isAdmin, uploadTeam.single("coverImage"), validateTeam, teamController.editTeamPhoto);
+
+// 5. Delete Team Photo
+app.delete("/teams/:id", isAdmin, teamController.deleteTeamPhoto);
+
+
 
 
 
