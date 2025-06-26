@@ -2,6 +2,7 @@
 
 <!-- Google Font for buttons -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!--Font Awesome-->
 
 <style>
   .youtube {
@@ -236,7 +237,7 @@ Built on decades of experience, driven by innovation.</p>
                         <div class="section-title-s3">
                             <span>Our Features</span>
                             <h2>Why Choose Us!</h2>
-                            <p>Hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him</p>
+                            <p>Trusted for our engineering excellence, reliable machinery and end-to-end project execution — backed by decades of experience</p>
                         </div>
                     </div>
                 </div>
@@ -246,12 +247,12 @@ Built on decades of experience, driven by innovation.</p>
                             <div class="grid">
                                 <i class="fi flaticon-network-1"></i>
                                 <h3>Professional Team</h3>
-                                <p>Whole of her lower arm towards the viewer. Gregor then turned to look out the window</p>
+                                <p>A skilled team of professionals driving innovation in industrial & machinery solutions</p>
                             </div>
                             <div class="grid">
                                 <i class="fi flaticon-circular-label-with-certified-stamp"></i>
                                 <h3>Certified engineers</h3>
-                                <p>Whole of her lower arm towards the viewer. Gregor then turned to look out the window</p>
+                                <p>A professional team of engineers and technicians delivering high quality machinery solutions</p>
                             </div>
                             <div class="grid">
                                 <i class="fi flaticon-chip"></i>
@@ -445,16 +446,17 @@ Built on decades of experience, driven by innovation.</p>
                 <div class="row">
                     <div class="col col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
                         <div class="section-title-s5">
-                            <span>Featured Projects</span>
-                            <h2>Explore What We've Done</h2>
-                            <p>Hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him</p>
+                            <span>Explore what we provide</span>
+                            <h2>Our Services</h2>
+                            <p>We provide turnkey machinery solutions tailored to diverse industrial manufacturing needs</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="content-area">
                 <div class="project-grids clearfix">
-                    <div class="grid">
+
+                <div class="grid">
                         <div class="overlay">
                             <span class="count">01.</span>
                             <h3>Soap Machinery</h3>
@@ -462,6 +464,7 @@ Built on decades of experience, driven by innovation.</p>
                             <a href="#" class="theme-btn">Read More</a>
                         </div>
                     </div>
+
                     <div class="grid">
                         <div class="overlay">
                             <span class="count">02.</span>
@@ -470,15 +473,17 @@ Built on decades of experience, driven by innovation.</p>
                             <a href="#" class="theme-btn">Read More</a>
                         </div>
                     </div>
+
                     <div class="grid">
                         <div class="overlay">
                             <span class="count">03.</span>
-                            <h3>Speciality Chemicals Machinery</h3>
-                            <p>Travelling salesman and above it there hung a picture that he had recently cut out</p>
+                            <h3>Chemicals Machinery</h3>
+                            <p>Travelling salesman and above it there hung a picture that he had recently cut out.</p>
                             <a href="#" class="theme-btn">Read More</a>
                         </div>
                     </div>
-                    <div class="grid">
+
+                  <div class="grid">
                         <div class="overlay">
                             <span class="count">04.</span>
                             <h3>Dhoop Machines</h3>
@@ -486,6 +491,7 @@ Built on decades of experience, driven by innovation.</p>
                             <a href="#" class="theme-btn">Read More</a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -700,9 +706,9 @@ Built on decades of experience, driven by innovation.</p>
             <% } %>
             <% if(admin){ %>
     <div class="admin-controls-floating">
-      <a href="/teams/<%= team._id %>/edit" class="btn-edit">Edit</a>
+      <a href="/teams/<%= team._id %>/edit" class="btn-edit"><i class="fa fa-pencil"></i> Edit</a>
       <form action="/teams/<%= team._id %>?_method=DELETE" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this Team photo?')">
-        <button type="submit" class="btn-delete">Delete</button>
+        <button type="submit" class="btn-delete"><i class="fa fa-trash"></i> Delete</button>
       </form>
     </div>
   <% } %>
@@ -748,8 +754,8 @@ Built on decades of experience, driven by innovation.</p>
                             </ul>
                         </div>
                         <div class="btns">
-                            <a href="services-s2.html" class="theme-btn">Our Services</a>
-                            <a href="contact.html" class="theme-btn-s3">Contact with us</a>
+                            <a href="/products" class="theme-btn">Our Products</a>
+                            <a href="/contact" class="theme-btn-s3">Contact with us</a>
                         </div>
                     </div>
                 </div>
