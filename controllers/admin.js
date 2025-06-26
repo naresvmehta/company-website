@@ -1,5 +1,5 @@
 module.exports.renderLoginPage = (req, res) => {
-  res.render("login.ejs");
+  res.render("login.ejs", {isAdminPage: true});
 };
 
 module.exports.login = (req, res) => {

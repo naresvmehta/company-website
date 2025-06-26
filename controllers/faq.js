@@ -5,7 +5,9 @@ const FAQ=require("../models/faq.js");
 module.exports.renderFaq = async(req,res)=>{
     try{
         const faqs = await FAQ.find({});
-        res.render("faq.ejs", {faqs, title:"FAQ"});
+        res.render("faq.ejs", {pgTitle: "FAQs – Soap, Detergent & Chemical Plant Machinery Queries | Patil Machines",
+metaDescription: "Get answers to common questions about our machinery, project handling, services, installation support, and manufacturing capabilities at Patil Machines Pvt. Ltd."
+,faqs, title:"FAQ"});
     }
     catch(err){
         console.log(err);
@@ -19,7 +21,7 @@ module.exports.renderFaq = async(req,res)=>{
 //Display Add FAQ Form
 
 module.exports.renderAddFaqForm = (req,res) => {
-    res.render("addFaq.ejs", {title: "Add New FAQ"});
+    res.render("addFaq.ejs", {isAdminPage: true, title: "Add New FAQ"});
 }
 
 
@@ -58,7 +60,7 @@ module.exports.renderEditFaqForm = async(req,res) =>{
         return res.redirect("/faq");
     }
 
-    res.render("editFaq.ejs", {title:"Edit FAQ", faq});
+    res.render("editFaq.ejs", {isAdminPage: true, title:"Edit FAQ", faq});
 }
 catch(err){
     cosnole.log(err);

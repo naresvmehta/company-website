@@ -1,6 +1,8 @@
 <% layout('layouts/boilerplate') %>
 
-
+<!-- Google Font for buttons -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!--Font Awesome-->
 
 <style>
   .youtube {
@@ -26,47 +28,126 @@
   }
 </style>
 
- <!-- start about-us-section -->
+
+  <style>
+
+    .marquee-wrapper {
+      overflow: hidden;
+      position: relative;
+    }
+    .marquee {
+      display: flex;
+      width: max-content;
+   /*   animation: scroll 40s linear infinite; */
+    }
+    .product-card {
+      flex: 0 0 300px;
+      width: 300px;
+      margin: 0 10px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      min-height: 440px; /* 🔁 Common height */
+    }
+    .product-card:hover {
+      transform: scale(1.03);
+       border: 1px solid #7fbaf8;
+      
+    }
+    .product-card img {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+    }
+    .product-card h4 {
+      margin: 15px;
+      font-size: 18px;
+    }
+    .product-card p {
+      margin: 0 15px 15px;
+      font-size: 14px;
+      color: #555;
+    }
+    .read-more {
+      display: block;
+      margin: 0 15px 15px;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .product-link{
+        text-decoration: none;
+        color: inherit;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .product-card {
+        flex: 0 0 90vw;
+        min-height: 420px;
+      }
+   /*   .marquee {
+        animation-duration: 40s;
+      } */
+    }
+  </style>
+
+
+
+
+        <!-- start about-us-section -->
         <section class="about-us-section section-padding">
             <div class="container">
                 <div class="row">
                     <div class="col col-md-6">
                         <div class="section-title">
                             <span>About us</span>
-                            <h2>We set the standards others try to live up to.</h2>
+                            <h2>Experience that sets the standard</h2>
                         </div>
                         <div class="details">
-                          
-                             <p id="short-about">
-  In India, Patil Machines Pvt Ltd was the first to develop a Plodder for Toilet Soap as well as Laundry soap Plant in the Year 1965....
+   <p id="short-about">
+  Patil Machines Pvt. Ltd. is a leading manufacturer and exporter of soap and detergent plant machinery in India. Established in 1965, we specialize in turnkey solutions for toilet soap plants, laundry soap production and detergent manufacturing equipment.
   <a href="#" id="read-more-about" style="color: blue; font-size: 0.9rem;">Read More</a>
 </p>
 
 <p id="full-about" style="display: none;">
-  In India, Patil Machines Pvt Ltd was the first to develop a Plodder for Toilet Soap as well as Laundry soap Plant in the Year 1965. Since then the convoy of Machinery and Solutions to numerous clients within the Nation as well as abroad has kept us on the leading position in the industry.<br><br>
-  We provide cutting edge solutions and state-of- art equipments to various applications like, Toilet Soap and Laundry Soap Plant, Detergent Cake Plant, Detergent Powder Machinery, Fatty Acid Plant, Sulphonation Plant, Oil Refinery Plant, Saponification – Noodle Plant. We specialize in manufacture, installation and commissioning of these projects as well as glycerine distillation plant and allied equipments.<br><br>
-  Our commitment to the continuously improving technology and consistency in quality has become a tradition to cater to the requirement of multinational organisation in this field.<br><br>
-  Our experience encompasses the areas such as basic design, detailed engineering, supply of the plant and equipments on turnkey basis and also erection and commissioning. Precision Machinists designers and engineers have kept themselves abreast with the latest technologies around the world. They research with the leading manufacturers and clients to determine the current and future needs of these industries. Such requirements have been studied with great care, concentrating on the difficulties commonly encountered by the actual users. The result of these activities is what results in new levels of productivity, efficiency and reliability.
+  Patil Machines Pvt. Ltd. is a pioneer in the Indian soap and detergent plant industry. In 1965, we became the first in India to develop a Plodder machine for toilet soap as well as laundry soap manufacturing. Since then, our convoy of high-quality machinery and industrial solutions has served numerous clients across India and abroad, making us a trusted name in soap and detergent plant manufacturing.<br><br>
+
+  We provide cutting-edge solutions and state-of-the-art equipment for a variety of applications including toilet soap plants, laundry soap plants, detergent cake plants, detergent powder machinery, fatty acid plants, sulphonation plants, oil refinery units and saponification–noodle plants. We also specialize in the design, supply and commissioning of glycerine distillation plants and other allied detergent production machinery.<br><br>
+
+  Our commitment to continuously improving technology, consistent product quality and efficient project execution has allowed us to meet the demands of multinational organizations and major industrial clients in the soap and detergent industry.<br><br>
+
+  Our expertise covers basic design, detailed engineering, turnkey plant supply, machinery manufacturing and complete installation and commissioning services. Our engineers and designers stay updated with the latest global technologies by collaborating with manufacturers and clients to understand real-time industry needs. These insights help us create machinery that improves productivity, ensures long-term reliability and addresses the real-world challenges faced in soap and detergent manufacturing plants.
 </p>
-                            
+
+
+
+
                             <div class="clearfix">
                                 <ul>
                                     <li><i class="ti-check"></i> Plodder tech pioneer since 1965</li>
                                     <li><i class="ti-check"></i> Soap & detergent plant solutions</li>
-                                
                                 </ul>
                                 <ul>
-                                    <li><i class="ti-check"></i>  Turnkey project expertise</li> 
+                                    <li><i class="ti-check"></i> Turnkey project expertise</li>
                                     <li><i class="ti-check"></i> Complete setup & commissioning</li>
                                 </ul>
                             </div>
                             <div class="btns">
-                                <a href="#" class="theme-btn">Our Services</a>
-                                <a href="contact.html" class="theme-btn-s3">Contact with us</a>
+                                <a href="/products" class="theme-btn">Our Products</a>
+                                <a href="/contact" class="theme-btn-s3">Contact with us</a>
                             </div>
                         </div>
                     </div>
-                 <div class="col col-md-6">
+
+
+ <div class="col col-md-6">
   <div class="right-col">
     <div class="img-holder youtube">
       <img src="assets/images/about3.jpg" alt="YouTube Logo">
@@ -78,10 +159,74 @@
     </div>
   </div>
 </div>
+
                 </div>
             </div> <!-- end container -->
         </section>
         <!-- end about-us-section -->
+
+
+        <!-- start service-section -->
+        <section class="service-section section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-md-6">
+                        <div class="section-title-s2">
+                            <span>Our Products</span>
+                            <h2>Delivering excellence in every machine</h2>
+                        </div>
+                    </div>
+                    <div class="col col-md-6">
+                        <div class="title-text">
+                            <p>Tailored engineering solutions for the soap, detergent and chemical industries.
+Built on decades of experience, driven by innovation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="service-grids clearfix">
+
+
+<div class="marquee-wrapper">
+ <div class="marquee" style="animation: scroll <%= animationDuration %>s linear infinite">
+
+
+
+   <% if (products && products.length > 0) { %>
+  <% for (let i = 0; i < 2 * products.length; i++) { 
+       const product = products[i % products.length]; 
+  %>
+    <a href="/products/<%= product._id %>" class="product-link">
+      <div class="product-card">
+        <img loading="lazy" src="<%= product.coverImage.url %>" alt="<%= product.title %>">
+        <h4><%= product.title %></h4>
+      </div>
+    </a>
+  <% } %>
+<% } else { %>
+  <p>No products available at the moment.</p>
+<% } %>
+
+
+
+   
+
+  </div>
+</div>
+
+
+                        </div>
+
+                        <div class="view-all">
+                            <p style="font-size: larger;">Please check out our <a href="/products">All Products</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end container -->
+        </section>
+        <!-- end service-section -->
+
 
 
         <!-- start why-choose-section -->
@@ -91,8 +236,8 @@
                     <div class="col col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
                         <div class="section-title-s3">
                             <span>Our Features</span>
-                            <h2>Why Choose Us!</h2>
-                            <p>Hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him</p>
+                            <h2>What Sets Us Apart</h2>
+                            <p>Trusted for our engineering excellence, reliable machinery and end-to-end project execution — backed by decades of experience</p>
                         </div>
                     </div>
                 </div>
@@ -102,12 +247,12 @@
                             <div class="grid">
                                 <i class="fi flaticon-network-1"></i>
                                 <h3>Professional Team</h3>
-                                <p>Whole of her lower arm towards the viewer. Gregor then turned to look out the window</p>
+                                <p>A skilled team of professionals driving innovation in industrial & machinery solutions</p>
                             </div>
                             <div class="grid">
                                 <i class="fi flaticon-circular-label-with-certified-stamp"></i>
                                 <h3>Certified engineers</h3>
-                                <p>Whole of her lower arm towards the viewer. Gregor then turned to look out the window</p>
+                                <p>A professional team of engineers and technicians delivering high quality machinery solutions</p>
                             </div>
                             <div class="grid">
                                 <i class="fi flaticon-chip"></i>
@@ -125,78 +270,174 @@
             </div> <!-- end container -->
         </section>
         <!-- end why-choose-section -->
+       
 
 
-        <!-- start testimonials-section -->
-        <section class="testimonials-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col col-lg-6 col-lg-offset-3">
-                        <div class="section-title-s4">
-                            <span>Testimonials</span>
-                            <h2>What People say’s About us</h2>
-                        </div>
-                    </div>
+
+<!-- Start Reviews Section -->
+
+<style>
+  .gradient-custom {
+    background: linear-gradient(to right, #2e7d32, #a5d6a7); /* Dark green to light green */
+    padding: 60px 0;
+  }
+
+  .carousel-indicators li {
+    background-color: #28a745;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+  }
+
+  .carousel-indicators .active {
+    background-color: #1b5e20;
+  }
+
+  .carousel-control.left,
+  .carousel-control.right {
+    background-image: none;
+    color: #1b5e20;
+    font-size: 30px;
+    top: 40%;
+  }
+
+  .profile-icon {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e0e0e0;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .quote-icon {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  .review-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 20px;
+    color: #333;
+  }
+
+  .carousel-caption {
+    position: static;
+    padding: 0;
+  }
+
+  .review-text {
+    font-size: 15px;
+  }
+
+  .testimonial-heading {
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .testimonial-footer {
+    margin-top: 30px;
+    text-align: center;
+    color: white;
+    font-size: 22px;
+  }
+
+  .testimonial-footer a {
+    color: #e8f5e9;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  .testimonial-footer a:hover {
+    color: #c8e6c9;
+  }
+</style>
+<section class="gradient-custom">
+  <div class="container">
+    <h2 class="testimonial-heading">What Our Clients Say About Us?</h2>
+
+    <div class="text-center mb-4">
+      <i class="fas fa-quote-left quote-icon"></i>
+    </div>
+
+    <% if (reviews.length > 0) { %>
+      <div id="reviewCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <% for (let i = 0; i < reviews.length; i++) { %>
+            <li data-target="#reviewCarousel" data-slide-to="<%= i %>" class="<%= i === 0 ? 'active' : '' %>"></li>
+          <% } %>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <% for (let i = 0; i < reviews.length; i++) {
+               const review = reviews[i]; %>
+            <div class="item <%= i === 0 ? 'active' : '' %>">
+              <div class="row review-card text-center text-md-left">
+                <div class="col-sm-4 text-center">
+                  <div class="profile-icon">
+                    <% if (!review.clientPhoto || !review.clientPhoto.url) { %>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#7f7f7f" width="100" height="100">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 
+                                 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 
+                                 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                      </svg>
+                    <% } else { %>
+                      <img loading="lazy" src="<%= review.clientPhoto.url %>" alt="Client Photo"
+                           style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    <% } %>
+                  </div>
                 </div>
-                <div class="row">
-                    <div class="col col-md-4">
-                        <div class="testimonial-left-img-holder">
-                            <img src="assets/images/testimonials/man.png" alt>
-                        </div>
-                    </div>
-                    <div class="col col-md-8">
-                        <div class="testimonial-grids testimonial-slider clearfix">
-                            <div class="grid">
-                                <div class="quote">
-                                    <i class="fi flaticon-quote"></i>
-                                    <p>“Recently cut out of an illustrated magazine and housed in a nice, gilded frame. It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look ”</p>
-                                </div>
-                                <div class="client-info">
-                                    <div class="img-holder">
-                                        <img src="assets/images/testimonials/img-1.jpg" alt>
-                                    </div>
-                                    <div class="details">
-                                        <h5>Michel jhon</h5>
-                                        <p>Manager of Automation</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="quote">
-                                    <i class="fi flaticon-quote"></i>
-                                    <p>“Recently cut out of an illustrated magazine and housed in a nice, gilded frame. It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look ”</p>
-                                </div>
-                                <div class="client-info">
-                                    <div class="img-holder">
-                                        <img src="assets/images/testimonials/img-2.jpg" alt>
-                                    </div>
-                                    <div class="details">
-                                        <h5>Alaska</h5>
-                                        <p>Business Officer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="quote">
-                                    <i class="fi flaticon-quote"></i>
-                                    <p>“Recently cut out of an illustrated magazine and housed in a nice, gilded frame. It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look ”</p>
-                                </div>
-                                <div class="client-info">
-                                    <div class="img-holder">
-                                        <img src="assets/images/testimonials/img-3.jpg" alt>
-                                    </div>
-                                    <div class="details">
-                                        <h5>Shain on</h5>
-                                        <p>Manager of Automation</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-sm-8">
+                  <div class="carousel-caption">
+                    <h4><%= review.clientName %></h4>
+                    <p class="review-text"><%= review.clientReview %></p>
+                  </div>
                 </div>
-            </div> <!-- end container -->
-        </section>
-        <!-- end testimonials-section -->
+              </div>
+            </div>
+          <% } %>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#reviewCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        </a>
+        <a class="right carousel-control" href="#reviewCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        </a>
+      </div>
+    <% } else { %>
+      <!-- Fallback message when there are no reviews -->
+      <div class="alert alert-warning text-center mt-4" role="alert">
+        No client reviews available at the moment. Please check back later.
+      </div>
+    <% } %>
+
+    <div class="text-center mt-4">
+      <i class="fas fa-quote-right quote-icon"></i>
+    </div>
+
+    <div class="testimonial-footer">
+      Please check out all our <a href="/reviews">Testimonials</a>
+    </div>
+  </div>
+</section>
+
+
+
+<!--end reviews section-->
 
 
         <!-- start featured-project-section -->
@@ -205,81 +446,57 @@
                 <div class="row">
                     <div class="col col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
                         <div class="section-title-s5">
-                            <span>Featured Projects</span>
-                            <h2>Explore What We've Done</h2>
-                            <p>Hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him</p>
+                            <span>Explore what we provide</span>
+                            <h2>Our Services</h2>
+                            <p>We provide turnkey machinery solutions tailored to diverse industrial manufacturing needs</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="content-area">
                 <div class="project-grids clearfix">
-                    <div class="grid">
+
+                <div class="grid">
                         <div class="overlay">
                             <span class="count">01.</span>
-                            <h3>Welding Processing</h3>
+                            <h3>Soap Machinery</h3>
                             <p>Travelling salesman and above it there hung a picture that he had recently cut out</p>
-                            <a href="#" class="theme-btn">Read More</a>
+                        <!--    <a href="#" class="theme-btn">Read More</a> -->
                         </div>
                     </div>
+
                     <div class="grid">
                         <div class="overlay">
                             <span class="count">02.</span>
-                            <h3>Materials project</h3>
+                            <h3>Food Machinery</h3>
                             <p>Travelling salesman and above it there hung a picture that he had recently cut out</p>
-                            <a href="#" class="theme-btn">Read More</a>
+                           
                         </div>
                     </div>
+
                     <div class="grid">
                         <div class="overlay">
                             <span class="count">03.</span>
-                            <h3>Oil & Gas project</h3>
-                            <p>Travelling salesman and above it there hung a picture that he had recently cut out</p>
-                            <a href="#" class="theme-btn">Read More</a>
+                            <h3>Chemicals Machinery</h3>
+                            <p>Travelling salesman and above it there hung a picture that he had recently cut out.</p>
+                        
                         </div>
                     </div>
-                    <div class="grid">
+
+                  <div class="grid">
                         <div class="overlay">
                             <span class="count">04.</span>
-                            <h3>Power Energy project</h3>
+                            <h3>Dhoop Machines</h3>
                             <p>Travelling salesman and above it there hung a picture that he had recently cut out</p>
-                            <a href="#" class="theme-btn">Read More</a>
+                      
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
         <!-- end featured-project-section -->
-
-
-        <!-- start partners-section -->
-        <section class="partners-section">
-            <h2 class="hidden">Partners</h2>
-            <div class="container">
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <div class="partner-grids partners-slider">
-                            <div class="grid">
-                                <img src="assets/images/partners/img-1.jpg" alt>
-                            </div>
-                            <div class="grid">
-                                <img src="assets/images/partners/img-2.jpg" alt>
-                            </div>
-                            <div class="grid">
-                                <img src="assets/images/partners/img-3.jpg" alt>
-                            </div>
-                            <div class="grid">
-                                <img src="assets/images/partners/img-4.jpg" alt>
-                            </div>
-                            <div class="grid">
-                                <img src="assets/images/partners/img-5.jpg" alt>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- end container -->
-        </section>
-        <!-- end partners-section -->
+<br><br><br>
 
 
         <!-- start fun-fact-section -->
@@ -324,101 +541,219 @@
         <!-- end fun-fact-section -->
 
 
-        <!-- start team-section -->
-        <section class="team-section section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
-                        <div class="section-title-s5">
-                            <span>Our Team</span>
-                            <h2>Dedicated Team</h2>
-                            <p>Hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <div class="team-grids">
-                            <div class="grid">
-                                <div class="img-social">
-                                    <div class="img-holder">
-                                        <img src="assets/images/team/img-1.jpg" alt>
-                                    </div>
-                                    <div class="social">
-                                        <ul>
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="ti-pinterest"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <h3>Michel Jhon</h3>
-                                    <span>Mechanical Engineering</span>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="img-social">
-                                    <div class="img-holder">
-                                        <img src="assets/images/team/img-2.jpg" alt>
-                                    </div>
-                                    <div class="social">
-                                        <ul>
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="ti-pinterest"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <h3>Wilium Mice</h3>
-                                    <span>Site Manager</span>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="img-social">
-                                    <div class="img-holder">
-                                        <img src="assets/images/team/img-3.jpg" alt>
-                                    </div>
-                                    <div class="social">
-                                        <ul>
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="ti-pinterest"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <h3>Jonthon teat</h3>
-                                    <span>Testing Manager</span>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="img-social">
-                                    <div class="img-holder">
-                                        <img src="assets/images/team/img-4.jpg" alt>
-                                    </div>
-                                    <div class="social">
-                                        <ul>
-                                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-                                            <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="ti-pinterest"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <h3>Shown kel</h3>
-                                    <span>Cheif Officer</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- end container -->
-        </section>
-        <!-- end team-section -->
+<!--Team Section Begin-->
 
+
+
+<style>
+  /* Container with wider width */
+  #teamCarouselContainer {
+    max-width: 950px;  /* wider container */
+    margin: 60px auto 40px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #1f5a24;
+  }
+
+  #teamCarouselContainer h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    letter-spacing: 1.3px;
+    border-bottom: 3px solid #1f5a24;
+    display: inline-block;
+    padding-bottom: 10px;
+  }
+
+  #teamCarousel {
+    max-width: 100%;
+    margin: 0 auto;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(31, 90, 36, 0.3);
+    background: #f7fff7;
+    border: 4px solid #1f5a24;
+  }
+
+  #teamCarousel .carousel-inner > .item > img {
+    width: 100%;
+    max-height: 650px;  /* taller for bigger image */
+    object-fit: cover;
+    border-radius: 12px 12px 12px 12px;
+  }
+
+/* If team.department or team.description (captions) is present */
+  #teamCarousel .carousel-inner > .item.has-caption > img {
+  border-radius: 12px 12px 0 0; /* Only top corners rounded */
+}
+
+  #teamCarousel .carousel-caption {
+    background: rgba(31, 90, 36, 0.75);
+    border-radius: 0 0 13px 13px;
+    padding: 18px 24px;
+    bottom: 0;
+  }
+
+  #teamCarousel .carousel-caption h5 {
+    color: #d4f1c5;
+    font-weight: 700;
+    font-size: 1.7rem;
+    margin: 0 0 8px 0;
+    letter-spacing: 1.1px;
+  }
+
+  #teamCarousel .carousel-caption p {
+    color: #cbe4b4;
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  /* Indicators */
+  #teamCarousel .carousel-indicators li {
+    border-color: #1f5a24;
+  }
+
+  #teamCarousel .carousel-indicators .active {
+    background-color: #1f5a24;
+  }
+
+  /* Controls */
+  #teamCarousel .left.carousel-control,
+  #teamCarousel .right.carousel-control {
+    background-image: none;
+    color: #1f5a24;
+    font-size: 40px;
+    width: 60px;
+    opacity: 0.85;
+  }
+
+  #teamCarousel .left.carousel-control:hover,
+  #teamCarousel .right.carousel-control:hover {
+    color: #4caf50;
+    opacity: 1;
+  }
+</style>
+
+<style>
+ .admin-controls-floating {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  z-index: 10;
+  font-family: 'Roboto', sans-serif;
+}
+
+.admin-controls-floating .btn-edit,
+.admin-controls-floating .btn-delete {
+  background-color: #1f5a24;
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 6px;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.admin-controls-floating .btn-edit:hover {
+  background-color: #2e7d32;
+}
+
+.admin-controls-floating .btn-delete {
+  background-color: #c62828;
+}
+
+.admin-controls-floating .btn-delete:hover {
+  background-color: #e53935;
+}
+
+
+</style>
+
+<div id="teamCarouselContainer">
+  <h2>Meet Our Team</h2>
+
+  <% if (teams.length > 0) { %>
+    <div id="teamCarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
+
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <% teams.forEach((team, index) => { %>
+          <li data-target="#teamCarousel" data-slide-to="<%= index %>" class="<%= index === 0 ? 'active' : '' %>"></li>
+        <% }) %>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <% teams.forEach((team, index) => { %>
+          <div class="item <%= index === 0 ? 'active' : '' %> <%= (team.department || team.description) ? 'has-caption' : '' %>">
+
+
+
+            <img loading="lazy" src="<%= team.coverImage.url %>" alt="<%= team.department || 'Team Photo' %>">
+            <% if(team.department || team.description) { %>
+            <div class="carousel-caption">
+              <% if (team.department) { %>
+                <h5><%= team.department %></h5>
+              <% } %>
+              <% if (team.description) { %>
+                <p><%= team.description %></p>
+              <% } %>
+            </div>
+            <% } %>
+            <% if(admin){ %>
+    <div class="admin-controls-floating">
+      <a href="/teams/<%= team._id %>/edit" class="btn-edit"><i class="fa fa-pencil"></i> Edit</a>
+      <form action="/teams/<%= team._id %>?_method=DELETE" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this Team photo?')">
+        <button type="submit" class="btn-delete"><i class="fa fa-trash"></i> Delete</button>
+      </form>
+    </div>
+  <% } %>
+          </div>
+        <% }) %>
+      </div>
+
+      <!-- Controls -->
+      <a class="left carousel-control" href="#teamCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#teamCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+
+    </div>
+  <% } else { %>
+    <!-- Fallback message when there are no team photos -->
+    <div class="alert alert-warning text-center mt-4" role="alert">
+      No team photos available at the moment. Please check back later.
+    </div>
+  <% } %>
+</div>
+<!--Team Section End-->
+
+
+ <!-- All JavaScript files
+    ================================================== -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins for this template -->
+    <script src="assets/js/jquery-plugin-collection.js"></script>
+
+    <!-- Custom script for this template -->
+    <script src="assets/js/script.js"></script>
+
+
+    <script>
+        //Read More
+  document.getElementById("read-more-about").addEventListener("click", function (e) {
+    e.preventDefault();
+    document.getElementById("short-about").style.display = "none";
+    document.getElementById("full-about").style.display = "block";
+  });
+  </script>

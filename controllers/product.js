@@ -9,7 +9,9 @@ const { extractPublicIds } = require("../utils/cloudinaryHelper");
 module.exports.index = async (req, res) => {
   try {
     const products = await Product.find({});
-    res.render("product.ejs", { title: "Our Products", products });
+    res.render("product.ejs", {pgTitle: "Our Products – Industrial Soap, Detergent & Chemical Machinery | Patil Machines",
+metaDescription: "Explore our range of machinery for soap, detergent, sulphonation, fatty acid, and chemical plants. Patil Machines Pvt. Ltd. builds high-precision, durable solutions for every industrial need.",
+ title: "Our Products", products });
   } catch (err) {
     console.error(err);
     req.flash("error", "Failed to load products!");
@@ -22,7 +24,7 @@ module.exports.index = async (req, res) => {
 
 // Render Add Product Form
 module.exports.renderAddProductForm = (req, res) => {
-  res.render("addProduct.ejs", { title: "Add New Products" });
+  res.render("addProduct.ejs", {isAdminPage:true, title: "Add New Products" });
 };
 
 
@@ -80,7 +82,8 @@ module.exports.showProduct = async (req, res) => {
       return res.redirect("/products");
     }
 
-    res.render("showProduct.ejs", { title: product.title, product });
+    res.render("showProduct.ejs", {  pgTitle: `${product.title} – Patil Machines`,
+  metaDescription: `Explore features and specs of ${product.title}, built for soap, detergent and chemical industries.`, title: product.title, product });
   } catch (err) {
     console.error("Error fetching product by ID: ", err);
     req.flash("error", "Something went wrong");
@@ -102,7 +105,7 @@ module.exports.renderEditForm = async (req, res) => {
       return res.redirect("/products");
     }
 
-    res.render("editProduct.ejs", { title: "Edit Form", product });
+    res.render("editProduct.ejs", {isAdminPage:true, title: "Edit Form", product });
   } catch (err) {
     console.error("Error in opening the Edit Form", err);
     req.flash("error", "Something went wrong. Please try again later");
@@ -179,7 +182,7 @@ module.exports.renderDeleteForm = async (req, res) => {
       return res.redirect("/products");
     }
 
-    res.render("deleteProduct.ejs", { title: "Delete Product", product });
+    res.render("deleteProduct.ejs", {isAdminPage:true, title: "Delete Product", product });
   } catch (err) {
     console.error("Error loading delete page:", err);
     req.flash("error", "Something went wrong.");

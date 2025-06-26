@@ -11,7 +11,9 @@ const { extractPublicIds } = require("../utils/cloudinaryHelper");
 module.exports.renderReviews = async (req,res) => {
     try{
     const reviews = await Review.find({});
-    res.render("showReview", {title:"Customer Reviews", reviews });
+    res.render("showReview", {pgTitle: "Client Reviews – Patil Machines Pvt Ltd | Reliable Industrial Engineering",
+metaDescription: "See why leading companies trust Patil Machines Pvt. Ltd. for their soap, detergent and chemical plant machinery needs. Read real client testimonials and feedback.",
+title:"Customer Reviews", reviews });
 }
 catch(err){
     console.error(err);
@@ -24,7 +26,7 @@ catch(err){
 
 //Render Review Add Page
 module.exports.renderAddReviewForm = (req,res) => {
-    res.render("addReview", {title:"Add Review"});
+    res.render("addReview", {isAdminPage:true, title:"Add Review"});
 }
 
 
@@ -102,7 +104,7 @@ try{
        return res.redirect("/reviews");
     }
 
-    res.render("editReview.ejs", {review, title: "Edit Review" });
+    res.render("editReview.ejs", {isAdminPage:true, review, title: "Edit Review" });
 }
 catch(err){
     console.error("Error in fetching Review: ", err);

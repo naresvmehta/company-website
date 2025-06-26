@@ -8,7 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="irstheme">
 
-    <title> Patil Machines Pvt Ltd </title>
+<% const pageTitle = typeof pgTitle !== 'undefined' ? pgTitle : "Patil Machines Pvt Ltd"; %>
+<% const pageDescription = typeof metaDescription !== 'undefined' ? metaDescription : "Patil Machines Pvt Ltd official website."; %>
+
+<title><%= pageTitle %></title>
+<meta name="description" content="<%= pageDescription %>">
+
+
+<% const adminFlag = typeof isAdminPage !== 'undefined' ? isAdminPage : false; %>
+<% if (adminFlag) { %>
+  <meta name="robots" content="noindex, nofollow">
+<% } %>
+
+
     <link rel="icon" type="image/x-icon" href="/assets/images/PM_LOGO.png">  <!--favicon-->
 
     

@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 //Render Add Team Photo Form
 
 module.exports.renderAddTeamPhotoForm = (req,res) =>{
-    res.render("addTeam.ejs", {title:"Add Team Photo"});
+    res.render("addTeam.ejs", {isAdminPage:true, title:"Add Team Photo"});
 }
 
 //Add Team Photo Form
@@ -73,7 +73,7 @@ try{
        return res.redirect("/home");
     }
 
-    res.render("editTeam.ejs", {team, title: "Edit Team Photo" });
+    res.render("editTeam.ejs", {isAdminPage:true, team, title: "Edit Team Photo" });
 }
 catch(err){
     console.error("Error in fetching Team Photo: ", err);
