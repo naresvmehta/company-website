@@ -352,7 +352,9 @@ app.use((err,req,res,next)=>{
 //Connecting to the Database
 
 async function main() {
-    await mongoose.connect(dbUrl);
+    await mongoose.connect(dbUrl, {
+  family: 4 // 👈 to force IPv4 for Atlas
+});
 }
 
 main()
