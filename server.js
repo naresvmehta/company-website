@@ -2,9 +2,14 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 
+const express = require('express');
+const app = express();
+
+app.set('trust proxy', true); // Enable Express to trust the reverse proxy (Apache) so that secure cookies work correctly over HTTPS
+
+
 const rateLimit = require('express-rate-limit');
 
-const express = require('express');
 const mongoose = require("mongoose");
 
 const ExpressError = require("./utils/ExpressError.js");
@@ -21,10 +26,6 @@ const teamController = require("./controllers/team.js");
 
 const path = require('path');
 
-
-const app = express();
-
-app.set('trust proxy', 1); // Enable Express to trust the reverse proxy (Apache) so that secure cookies work correctly over HTTPS
 
 const engine = require('ejs-mate');
 const PORT = process.env.PORT;
