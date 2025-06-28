@@ -23,6 +23,9 @@ const path = require('path');
 
 
 const app = express();
+
+app.set('trust proxy', 1); // Enable Express to trust the reverse proxy (Apache) so that secure cookies work correctly over HTTPS
+
 const engine = require('ejs-mate');
 const PORT = process.env.PORT;
 
