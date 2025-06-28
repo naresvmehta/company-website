@@ -9,7 +9,7 @@ const { extractPublicIds } = require("../utils/cloudinaryHelper");
 module.exports.index = async (req, res) => {
   try {
     const products = await Product.find({});
-    res.render("product.ejs", {pgTitle: "Our Products – Industrial Soap, Detergent & Chemical Machinery | Patil Machines",
+    res.render("product.ejs", {pgTitle: "Our Products – Industrial Soap, Detergent & Chemical Machinery | Patil Machines Pvt Ltd",
 metaDescription: "Explore our range of machinery for soap, detergent, sulphonation, fatty acid, and chemical plants. Patil Machines Pvt. Ltd. builds high-precision, durable solutions for every industrial need.",
  title: "Our Products", products });
   } catch (err) {
@@ -82,7 +82,7 @@ module.exports.showProduct = async (req, res) => {
       return res.redirect("/products");
     }
 
-    res.render("showProduct.ejs", {  pgTitle: `${product.title} – Patil Machines`,
+    res.render("showProduct.ejs", {  pgTitle: `${product.title} – Patil Machines Pvt Ltd`,
   metaDescription: `Explore features and specs of ${product.title}, built for soap, detergent and chemical industries.`, title: product.title, product });
   } catch (err) {
     console.error("Error fetching product by ID: ", err);
