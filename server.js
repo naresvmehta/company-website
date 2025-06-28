@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express');
 const app = express();
 
-app.set('trust proxy', true); // Enable Express to trust the reverse proxy (Apache) so that secure cookies work correctly over HTTPS
+app.set('trust proxy', 1); // Enable Express to trust the reverse proxy (Apache) so that secure cookies work correctly over HTTPS
 
 
 const rateLimit = require('express-rate-limit');
