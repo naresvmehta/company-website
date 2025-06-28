@@ -72,7 +72,7 @@ const sessionOptions = {
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     httpOnly: true,
     sameSite: 'lax',
-    secure: false               //process.env.ENVIRONMENT === "production"    //Cookies are only available in HTTPS (only in production)
+    secure: process.env.ENVIRONMENT === "production"    //Cookies are only available in HTTPS (only in production)
     //.env values are parsed as strings by default — even numbers or booleans become strings
   }
 }
