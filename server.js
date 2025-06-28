@@ -1,11 +1,7 @@
 require('dotenv').config();
 
-
 const express = require('express');
 const app = express();
-
-app.set('trust proxy', 1); // Enable Express to trust the reverse proxy (Apache) so that secure cookies work correctly over HTTPS
-
 
 const rateLimit = require('express-rate-limit');
 
@@ -72,7 +68,6 @@ const sessionOptions = {
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     httpOnly: true,
     sameSite: 'lax',
-    secure: process.env.ENVIRONMENT === "production"    //Cookies are only available in HTTPS (only in production)
     //.env values are parsed as strings by default — even numbers or booleans become strings
   }
 }
