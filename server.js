@@ -321,7 +321,7 @@ const validateEnquiry = (req, res, next) => {
 // Rate limiter for contact form submissions
 const contactFormLimiter = rateLimit({
   windowMs: 10 * 60 * 1000, // 10 minutes
-  max: 10, // limit each IP to 10 requests per windowMs (So max 10 requests in 10 mins)
+  max: 15, // limit each IP to 15 requests per windowMs (So max 15 requests in 10 mins)
  handler: (req, res, next) => {
  const backUrl = req.body.fromPage || req.get("Referer") || '/home';
   req.flash('error', "Too many enquiries sent from this IP. Please try again after 10 minutes");

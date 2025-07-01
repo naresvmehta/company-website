@@ -1,3 +1,5 @@
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!--Font Awesome-->
+
  <!-- start cta-section -->
 <section class="cta-section">
     <div class="container">
@@ -99,9 +101,25 @@
                     <div class="row">
                         <div class="separator"></div>
                         <div class="col col-xs-12">
+                        <div class="social-icons">
+        <ul class="social-icons-list">
+        <!-- LinkedIn -->
+        <li>
+            <a href="https://www.linkedin.com/company/precision-machinists/" target="_blank" rel="noopener" aria-label="Visit our LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </li>
+        <!-- YouTube -->
+        <li>
+            <a href="https://www.youtube.com/@precisionmachinists3633" target="_blank" rel="noopener" aria-label="Visit our YouTube channel">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </li>
+    </ul>
+</div>
 
-                            <footer style="text-align:center; padding:15px 0; font-size:0.9rem; color:#666; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-  <p>&copy; <span id="year"></span> Patil Machines Pvt Ltd. All rights reserved.</p>
+                            <footer style="text-align:center; padding:10px 0; font-size:0.9rem; color:#666; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+  <p>&copy; <span id="year"></span> Patil Machines Pvt. Ltd. All rights reserved.</p>
 </footer>
 
 
@@ -119,6 +137,38 @@
 </script>
 
 <style>
+    .social-icons-list {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Equal spacing */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.social-icons-list li a {
+    font-size: 1.4rem;
+    color: #555; /* Neutral base */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons-list li a:hover,
+.social-icons-list li a:focus {
+    transform: scale(1.15);
+    outline: none;
+}
+
+/* Platform-specific hover colors */
+.social-icons-list li a[href*="linkedin"]:hover,
+.social-icons-list li a[href*="linkedin"]:focus {
+    color: #0077b5; /* LinkedIn Blue */
+}
+
+.social-icons-list li a[href*="youtube"]:hover,
+.social-icons-list li a[href*="youtube"]:focus {
+    color: #FF0000 !important; /* YouTube Red */
+}
+
     @media(max-width:650px){
      .telephone, .email{
         margin-left: 10px !important;
