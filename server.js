@@ -1,10 +1,10 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
-}
+require('dotenv').config();
+
+const express = require('express');
+const app = express();
 
 const rateLimit = require('express-rate-limit');
 
-const express = require('express');
 const mongoose = require("mongoose");
 
 const ExpressError = require("./utils/ExpressError.js");
@@ -22,7 +22,6 @@ const teamController = require("./controllers/team.js");
 const path = require('path');
 
 
-const app = express();
 const engine = require('ejs-mate');
 const PORT = process.env.PORT;
 
@@ -69,7 +68,6 @@ const sessionOptions = {
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     httpOnly: true,
     sameSite: 'lax',
-    secure: process.env.ENVIRONMENT === "production"    //Cookies are only available in HTTPS (only in production)
     //.env values are parsed as strings by default — even numbers or booleans become strings
   }
 }
@@ -376,7 +374,7 @@ main()
   });
 
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running at http://0.0.0.0:${PORT}`);
+app.listen(PORT, '127.0.0.1', () => {
+  console.log(`Server running at http://127.0.0.1:${PORT}`);
 });
 

@@ -16,14 +16,14 @@ module.exports.renderHome = async (req, res) => {
     const speedPerItem = 4;
     let duration = products.length * speedPerItem;
     const animationDuration = Math.min(Math.max(duration, 20), 120); // fallback logic (20s - 120s) --> Suitable speed for upto 30 - 35 images
-    res.render("home.ejs", {pgTitle: "Patil Machines – Complete Solutions for Soap, Detergent & Chemical Plant Machinery",
+    res.render("home.ejs", {pgTitle: "Patil Machines Pvt Ltd – Complete Solutions for Soap, Detergent & Chemical Plant Machinery",
 metaDescription: "Patil Machines Pvt. Ltd. delivers high-performance soap, detergent, and chemical plant machinery solutions in India and abroad — backed by decades of engineering expertise.",
  title: false, reviews, products, teams, animationDuration });
   
 } catch (err) {
     console.error("Error in Home Page: ", err);
     res.render("home.ejs", {
-pgTitle: "Patil Machines – Turnkey Solutions for Soap, Detergent & Chemical Plant Machinery",
+pgTitle: "Patil Machines Pvt Ltd – Turnkey Solutions for Soap, Detergent & Chemical Plant Machinery",
 metaDescription: "Patil Machines Pvt. Ltd. delivers high-performance soap, detergent, and chemical plant machinery solutions in India and abroad — backed by decades of engineering expertise.",
 
       title: false,
