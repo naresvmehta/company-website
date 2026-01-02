@@ -45,10 +45,6 @@ module.exports.submitEnquiry = async (req, res) => {
       formattedDate
     ]];
 
-    console.log("➡️ About to append to Google Sheets");
-    console.log("Sheet ID:", process.env.GOOGLE_SHEET_ID);
-    console.log("Service Email:", process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL);
-
     const sheets = getSheetsClient();
 
     const response = await sheets.spreadsheets.values.append({
@@ -58,7 +54,7 @@ module.exports.submitEnquiry = async (req, res) => {
       requestBody: { values },
     });
 
-    console.log("✅ Google Sheets append response:", response.status);
+    console.log("Google Sheets append response:", response.status);
 
     // Flash success message
     req.flash("success", "Thank you for contacting us! We'll get back to you shortly");
