@@ -3,6 +3,8 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
+app.set("trust proxy", 1);
+
 const rateLimit = require('express-rate-limit');
 
 const mongoose = require("mongoose");
