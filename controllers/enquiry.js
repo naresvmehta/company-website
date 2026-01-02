@@ -20,8 +20,6 @@ module.exports.submitEnquiry = async (req, res) => {
   const backURL = req.body.fromPage || req.get("Referer") || "/home";
 
   try {
-    console.log("➡️ Enquiry controller hit");
-
     const contact = req.body.contact || {};
     const phone = contact.phone || "";
 
@@ -69,13 +67,13 @@ module.exports.submitEnquiry = async (req, res) => {
       //Fire-and-forget email (safe pattern)
       setImmediate(() => {
         sendEnquiryMail(contact, phone, formattedDate)
-          .then(() => console.log("📧 Enquiry email sent"))
-          .catch(err => console.error("❌ Email failed:", err));
+          .then(() => console.log("Enquiry email sent"))
+          .catch(err => console.error("Email failed:", err));
       });
     });
 
   } catch (error) {
-    console.error("❌ Error appending data to Google Sheet:", error);
+    console.error("Error appending data to Google Sheet:", error);
 
     req.flash("error", "Something went wrong. Please try again later");
 
